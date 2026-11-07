@@ -166,7 +166,66 @@ footer .foot-dis a{color:#fff}
 @media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#fff;flex-direction:column;padding:10px 16px;border-bottom:2px solid var(--mint)}.nav-links.open{display:flex}.navToggle{display:block}
  .g2,.g3,.g4,.en-grid{grid-template-columns:1fr}.g2.keep2,.act-grid{grid-template-columns:repeat(2,1fr)}}
-@media print{.nav,.edit-toolbar,#backTop,#scrollProg,.navToggle,.up-btn,.remove-btn,.add-tile{display:none!important}body{background:#fff}section{padding:24px 0;break-inside:avoid}}
+/* ===================== playful enhancement layer ===================== */
+.wrap{position:relative;z-index:2}
+section{overflow:hidden}
+.deco{position:absolute;pointer-events:none;z-index:0}
+.deco svg{width:100%;height:auto;display:block}
+/* colourful card cycling (accent var per card) */
+.grid>*{--ac:var(--indigo);--acl:var(--mint)}
+.grid>*:nth-child(4n+1){--ac:var(--pink);--acl:#fde3ee}
+.grid>*:nth-child(4n+2){--ac:var(--teal-d);--acl:#d6f4f0}
+.grid>*:nth-child(4n+3){--ac:var(--indigo);--acl:#e7e7fc}
+.grid>*:nth-child(4n+4){--ac:#E29500;--acl:#fdeec5}
+.card{border-top:5px solid var(--ac)}
+.card .ic-circle{background:var(--acl);color:var(--ac)}
+.card h3{color:var(--ac)}
+.num-badge{background:var(--ac)!important}
+.alt .num-badge{background:var(--ac)!important}
+.act-card{border-top:4px solid var(--ac)}
+.act-card h3{color:var(--ac)}
+.act-card .photo-frame{border-color:var(--ac);color:var(--ac);background:var(--acl)}
+.res-card{border-top:5px solid var(--ac)}.res-card .ic-circle{background:var(--acl);color:var(--ac)}.res-title{color:var(--ac)}
+.testi{border-top:5px solid var(--ac)}.testi .q-ic{color:var(--ac)}.testi-photo{background:var(--acl);color:var(--ac);border-color:var(--ac)}
+/* colourful section titles + hand-drawn underline */
+.section-title{position:relative;display:inline-block;padding-bottom:12px}
+.section-title::after{content:"";position:absolute;left:0;bottom:0;height:9px;width:100%;border-radius:8px;
+  background:linear-gradient(90deg,var(--pink),var(--yellow) 45%,var(--teal) 75%,var(--indigo));opacity:.85}
+section:nth-of-type(5n+1) .section-title{color:var(--pink)}
+section:nth-of-type(5n+2) .section-title{color:var(--indigo)}
+section:nth-of-type(5n+3) .section-title{color:var(--teal-d)}
+section:nth-of-type(5n+4) .section-title{color:#C77A00}
+section:nth-of-type(5n+5) .section-title{color:var(--pink)}
+.section-label{display:inline-block;background:var(--acl,#fde3ee);color:var(--pink);padding:5px 14px;border-radius:30px}
+section:nth-of-type(even) .section-label{background:#e7e7fc;color:var(--indigo)}
+/* stat strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:4px 0 8px}
+.stat-card{border-radius:22px;padding:22px 16px;text-align:center;color:#fff;box-shadow:0 14px 30px -18px rgba(0,0,0,.4);transform:rotate(-1deg)}
+.stat-card:nth-child(2){transform:rotate(1.2deg)}.stat-card:nth-child(3){transform:rotate(-1.4deg)}.stat-card:nth-child(4){transform:rotate(1deg)}
+.stat-card:nth-child(1){background:var(--pink)}.stat-card:nth-child(2){background:var(--teal-d)}
+.stat-card:nth-child(3){background:var(--indigo)}.stat-card:nth-child(4){background:#E29500}
+.stat-card .number{font-family:var(--fh);font-weight:700;font-size:44px;line-height:1;display:block}
+.stat-card .label{font-family:var(--fh);font-weight:500;font-size:14.5px;opacity:.96;display:block;margin-top:4px}
+/* colourful callout bubbles */
+.callout{border-radius:28px;padding:26px 32px;position:relative;margin:28px 0;box-shadow:0 18px 40px -24px rgba(0,0,0,.45);z-index:2}
+.callout::after{content:"";position:absolute;left:46px;bottom:-16px;border:16px solid transparent;border-top-color:inherit;border-bottom:0}
+.callout h3{color:#fff;font-size:clamp(21px,3vw,27px);margin:0 0 6px}
+.callout p{margin:0;font-size:17.5px;line-height:1.5}
+.callout.pink{background:var(--pink);color:#fff}.callout.pink::after{color:var(--pink)}
+.callout.indigo{background:var(--indigo);color:#fff}.callout.indigo::after{color:var(--indigo)}
+.callout.teal{background:var(--teal-d);color:#fff}.callout.teal::after{color:var(--teal-d)}
+.callout.yellow{background:var(--yellow)}.callout.yellow h3{color:#6b5200}.callout.yellow p{color:#6b5200}.callout.yellow::after{color:var(--yellow)}
+/* hero polish */
+.hero-bubble{z-index:2}
+.hero-bubble::before{content:"";position:absolute;inset:0;border-radius:40px;border:3px dashed rgba(90,92,224,.25);margin:10px;pointer-events:none}
+.hero-flags{margin-top:6px}
+/* team card flag chip */
+.team-header .flag{filter:drop-shadow(0 2px 2px rgba(0,0,0,.15))}
+/* nav brand pop */
+.brand{background:linear-gradient(90deg,var(--indigo),var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.brand b{-webkit-text-fill-color:var(--yellow)}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media print{.nav,.edit-toolbar,#backTop,#scrollProg,.navToggle,.up-btn,.remove-btn,.add-tile,.deco{display:none!important}body{background:#fff}section{padding:24px 0;break-inside:avoid}}
 </style></head>
 <body>
 <div id="scrollProg"></div>
@@ -206,6 +265,13 @@ footer .foot-dis a{color:#fff}
     <p>The project responds to the ongoing challenges of discrimination, social exclusion and unequal participation faced by Roma, migrant and refugee youth across Europe. The exchange strengthens active citizenship, intercultural competences and anti-discrimination skills through shared learning and cooperation.</p>
     <p>Using non-formal learning methods, participants take part in Living Library sessions, intercultural workshops, community mapping, forum theatre and creative activities, and they build real friendships across borders.</p>
   </div>
+  <div class="stats reveal">
+    <div class="stat-card"><span class="number">36</span><span class="label">Young people</span></div>
+    <div class="stat-card"><span class="number">6</span><span class="label">Countries</span></div>
+    <div class="stat-card"><span class="number">10</span><span class="label">Days together</span></div>
+    <div class="stat-card"><span class="number">1</span><span class="label">Shared road</span></div>
+  </div>
+  <div class="callout pink reveal"><h3>Roots we stand on, roads we walk together.</h3><p>Everyone belongs on the road. This handbook is our shared memory of the week, and it is yours to fill in.</p></div>
 </div></section>
 
 <section id="erasmus" style="background:#f6fbfb"><div class="wrap">
@@ -308,6 +374,7 @@ footer .foot-dis a{color:#fff}
   <h2 class="section-title reveal">Methods for inclusion &amp; anti-racism</h2>
   <p class="lead reveal">The non-formal approach behind every activity.</p>
   <div class="grid g3"><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Non-formal learning</h3><p>Learning by doing and reflecting, in a relaxed setting where everyone takes part and nobody is graded.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>A safe space &amp; group agreement</h3><p>The group writes its own rules together so everyone can speak, disagree with respect and opt out of anything too personal.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Start from lived experience</h3><p>Activities begin from real life and community, not from theory, and no one has to speak for a whole group.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Challenge the behaviour, not the person</h3><p>We name exclusion and stereotypes and practise interrupting them, while keeping respect for every person in the room.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Peer learning &amp; reflection</h3><p>Daily reflection groups and Youthpass turn the experience into learning each person can name and reuse.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Creative and embodied methods</h3><p>Theatre, film, mapping and storytelling let people explore inclusion with their whole selves, not only with words.</p></div></div>
+  <div class="callout teal reveal"><h3>Challenge the behaviour, not the person.</h3><p>We name exclusion and stereotypes out loud, and we keep respect for every single person in the room.</p></div>
 </div></section>
 
 <section id="stereotypes" style="background:#f6fbfb"><div class="wrap">
@@ -315,6 +382,7 @@ footer .foot-dis a{color:#fff}
   <h2 class="section-title reveal">Stereotypes &amp; prejudice</h2>
   <p class="lead reveal">A short, shared language for the things this project works against.</p>
   <div class="grid g3"><div class="card reveal"><div class="num-badge">01</div><h3>What is a stereotype</h3><p>A fixed, oversimplified picture of a whole group ("they are all&hellip;"). It is a mental shortcut that ignores the real, different people inside the group.</p></div><div class="card reveal"><div class="num-badge">02</div><h3>What is prejudice</h3><p>A judgement or feeling about someone because of the group they belong to, formed before you actually know them.</p></div><div class="card reveal"><div class="num-badge">03</div><h3>What is discrimination</h3><p>When a stereotype or prejudice turns into action: treating someone worse, leaving them out, or denying them something because of who they are.</p></div><div class="card reveal"><div class="num-badge">04</div><h3>How it grows</h3><p>Stereotype leads to prejudice, prejudice leads to discrimination, and unchecked discrimination can harden into exclusion and even violence. It can be stopped at any step.</p></div><div class="card reveal"><div class="num-badge">05</div><h3>Antigypsyism &amp; racism</h3><p>Specific, long-standing prejudice against Roma, and racism against migrants and refugees, remain widespread in Europe. Naming them is the first step to ending them.</p></div><div class="card reveal"><div class="num-badge">06</div><h3>How to interrupt it</h3><p>Meet the person behind the label, ask instead of assume, speak up as a bystander, and share real stories that break the stereotype.</p></div></div>
+  <div class="callout yellow reveal"><h3>The label is not the person.</h3><p>Meet the person behind the stereotype, ask instead of assume, and share the real story that breaks it.</p></div>
 </div></section>
 
 <section id="falken"><div class="wrap">
@@ -372,6 +440,7 @@ const editableSelectors=[
   '.team-header h3','.team-header .count','.team-card p',
   '.testi-quote','.testi-name',
   '.act-card h3','.act-card p',
+  '.stat-card .number','.stat-card .label','.callout h3','.callout p',
   '.falken h3','.falken p','.cbtn span','.foot-dis p'
 ];
 const imageSelectors='.photo-frame, .team-photo-slot, .hero-photo, .testi-photo';
@@ -575,5 +644,27 @@ document.addEventListener('DOMContentLoaded',()=>{
     let cur='';secs.forEach(s=>{if(y>=s.offsetTop-140)cur=s.id;});links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));}
   window.addEventListener('scroll',onScroll,{passive:true});onScroll();bt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
 });
+</script>
+<script>
+(function(){
+ var S={
+  star:'<path d="M50 4 62 38 98 38 69 60 80 95 50 73 20 95 31 60 2 38 38 38Z"/>',
+  squiggle:'<path d="M4 22 Q19 2 34 22 T64 22 T94 22" fill="none" stroke-width="8" stroke-linecap="round"/>',
+  dots:'<circle cx="14" cy="14" r="8"/><circle cx="44" cy="14" r="8"/><circle cx="74" cy="14" r="8"/><circle cx="14" cy="44" r="8"/><circle cx="44" cy="44" r="8"/><circle cx="74" cy="44" r="8"/><circle cx="14" cy="74" r="8"/><circle cx="44" cy="74" r="8"/><circle cx="74" cy="74" r="8"/>',
+  blob:'<path d="M50 6c22 0 42 14 40 40s-20 46-44 44S6 66 10 42 28 6 50 6Z"/>',
+  ring:'<circle cx="50" cy="50" r="42" fill="none" stroke-width="10"/>'
+ };
+ var COL=['#5A5CE0','#F6D34B','#3FC3BD','#EC4B8C'];
+ var K=['star','squiggle','dots','blob','ring'];
+ var POS=['top:16px;left:-18px','top:44px;right:-14px','bottom:26px;left:24px','bottom:-18px;right:36px','top:130px;left:40px'];
+ var secs=document.querySelectorAll('header.hero, section');
+ for(var i=0;i<secs.length;i++){var sec=secs[i];sec.style.position='relative';
+   for(var j=0;j<2;j++){var k=K[(i+j)%K.length];var c=COL[(i+j)%COL.length];var p=POS[(i*2+j)%POS.length];
+     var d=document.createElement('div');d.className='deco';
+     d.style.cssText=p+';width:'+(64+((i+j)%3)*26)+'px;opacity:.15;color:'+c;
+     var fs=(k==='squiggle'||k==='ring')?'fill="none" stroke="'+c+'"':'fill="'+c+'"';
+     d.innerHTML='<svg viewBox="0 0 100 100" '+fs+'>'+S[k]+'</svg>';
+     sec.appendChild(d);}}
+})();
 </script>
 </body></html>
