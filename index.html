@@ -225,7 +225,16 @@ section:nth-of-type(even) .section-label{background:#e7e7fc;color:var(--indigo)}
 .brand{background:linear-gradient(90deg,var(--indigo),var(--pink));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .brand b{-webkit-text-fill-color:var(--yellow)}
 @media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
-@media print{.nav,.edit-toolbar,#backTop,#scrollProg,.navToggle,.up-btn,.remove-btn,.add-tile,.deco{display:none!important}body{background:#fff}section{padding:24px 0;break-inside:avoid}}
+@media print{
+ .nav,.edit-toolbar,#backTop,#scrollProg,.navToggle,.up-btn,.remove-btn,.add-tile,.deco{display:none!important}
+ body{background:#fff}
+ section{padding:14px 0;break-inside:auto;overflow:visible}
+ .grid,.stats,.wall{break-inside:auto}
+ .card,.act-card,.team-card,.testi,.res-card,.stat-card,.callout,.handbook,.falken,.photo-frame,.team-photo-slot,.wall-item,.grid>*{break-inside:avoid;page-break-inside:avoid}
+ .section-title,.section-label,h2,h3{break-after:avoid}
+ .hero-bubble{break-inside:avoid}
+ a[href]{color:inherit}
+}
 </style></head>
 <body>
 <div id="scrollProg"></div>
