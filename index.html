@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Roots &amp; Roads — Digital Handbook</title>
+<meta name="description" content="The digital handbook of the Roots &amp; Roads Erasmus+ Youth Exchange: Inclusion of Roma, Migrant and Refugee Youth.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+ --pink:#EC4B8C;--pink-d:#D23A78;--teal:#3FC3BD;--teal-d:#2BA9A3;--mint:#CFF0EE;
+ --yellow:#F6D34B;--indigo:#5A5CE0;--indigo-d:#4547c4;--navy:#242a63;--ink:#2c2e4a;--muted:#6b6f8c;
+ --paper:#ffffff;--line:#d7efee;--ring:rgba(90,92,224,.18);
+ --fh:'Fredoka',system-ui,sans-serif;--fb:'Nunito',system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:74px}
+body{margin:0;font-family:var(--fb);color:var(--ink);line-height:1.6;font-size:16.5px;
+ background:#fff;
+ background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+ background-size:34px 34px;}
+h1,h2,h3,h4,.fh{font-family:var(--fh);font-weight:700;color:var(--navy);line-height:1.1}
+a{color:var(--indigo);text-decoration:none}
+img{max-width:100%;display:block}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+section{padding:66px 0;position:relative}
+.section-label{font-family:var(--fh);font-weight:600;letter-spacing:.04em;text-transform:uppercase;font-size:14px;color:var(--pink);margin:0 0 6px}
+.section-title{font-size:clamp(27px,4.4vw,42px);margin:0 0 14px}
+.lead{font-size:18px;color:var(--muted);max-width:760px;margin:0 0 30px}
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:2px solid var(--mint)}
+.nav .wrap{display:flex;align-items:center;gap:16px;height:62px}
+.brand{font-family:var(--fh);font-weight:700;font-size:20px;color:var(--navy);white-space:nowrap}
+.brand b{color:var(--pink)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{font-family:var(--fh);font-weight:500;font-size:14.5px;color:var(--navy);padding:7px 10px;border-radius:9px}
+.nav-links a:hover,.nav-links a.active{background:var(--mint);color:var(--indigo-d)}
+.navToggle{display:none;margin-left:auto;background:var(--indigo);color:#fff;border:none;border-radius:10px;width:42px;height:38px;font-size:19px;cursor:pointer}
+#scrollProg{position:fixed;top:0;left:0;height:4px;width:0;background:linear-gradient(90deg,var(--pink),var(--yellow),var(--teal));z-index:60}
+/* hero */
+.hero{padding:30px 0 56px;text-align:center;overflow:hidden}
+.logobar{display:flex;align-items:center;justify-content:center;gap:26px;flex-wrap:wrap;margin-bottom:26px}
+.logobar .lg{height:46px;display:flex;align-items:center}
+.logobar .lg svg{height:46px;width:auto}
+.logobar .lg img{height:52px;width:auto}
+.hero-bubble{background:var(--mint);border-radius:40px;padding:34px 30px 38px;position:relative;max-width:900px;margin:0 auto;box-shadow:0 16px 40px -22px rgba(90,92,224,.5)}
+.hero-badge{display:inline-block;background:var(--pink);color:#fff;font-family:var(--fh);font-weight:600;padding:5px 16px;border-radius:30px;font-size:13.5px;letter-spacing:.05em;text-transform:uppercase;margin-bottom:12px}
+.hero h1{font-size:clamp(42px,9vw,86px);color:var(--pink);margin:0 0 6px;letter-spacing:.5px;-webkit-text-stroke:0}
+.hero-subtitle{font-family:var(--fh);font-weight:600;font-size:clamp(18px,3.3vw,27px);color:var(--indigo);margin:0 auto 16px;max-width:620px;line-height:1.15}
+.hero-meta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.hero-meta span{background:#fff;border-radius:24px;padding:8px 16px;font-family:var(--fh);font-weight:600;color:var(--navy);font-size:15px;box-shadow:0 6px 16px -10px rgba(0,0,0,.3)}
+.hero-flags{font-size:30px;letter-spacing:4px}
+.squig{position:absolute;opacity:.9;pointer-events:none}
+/* generic cards grid */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:#fff;border:2px solid var(--mint);border-radius:20px;padding:22px 20px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(90,92,224,.5)}
+.ic-circle{width:50px;height:50px;border-radius:15px;display:flex;align-items:center;justify-content:center;background:var(--mint);color:var(--indigo);margin-bottom:12px}
+.ic-circle .ico{width:26px;height:26px}
+.card h3{font-size:19px;margin:0 0 7px}
+.card h4{font-size:17px;margin:0 0 6px}
+.card p{margin:0;color:var(--muted);font-size:15.5px}
+.num-badge{width:40px;height:40px;border-radius:50%;background:var(--pink);color:#fff;font-family:var(--fh);font-weight:700;font-size:19px;display:flex;align-items:center;justify-content:center;margin-bottom:10px}
+.alt .num-badge{background:var(--indigo)}
+.about-text p{font-size:17px;color:var(--ink);margin:0 0 14px;max-width:820px}
+/* photo frame */
+.photo-frame,.team-photo-slot,.testi-photo{position:relative;background:var(--mint);border:2px dashed var(--teal);border-radius:16px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--teal-d);font-family:var(--fh);font-weight:600;font-size:14px;text-align:center;overflow:hidden;cursor:default}
+.photo-frame .ico,.team-photo-slot .ico,.testi-photo .ico{width:30px;height:30px;opacity:.8}
+.photo-frame img,.team-photo-slot img,.testi-photo img{width:100%;height:100%;object-fit:cover}
+.team-photo-slot{aspect-ratio:4/3}
+.photo-frame{aspect-ratio:16/10;margin-bottom:12px}
+body.editing .photo-frame,body.editing .team-photo-slot,body.editing .testi-photo{cursor:pointer;outline:2px solid transparent}
+body.editing .photo-frame:hover,body.editing .team-photo-slot:hover,body.editing .testi-photo:hover{border-color:var(--pink);color:var(--pink)}
+.slot-remove{position:absolute;top:8px;right:8px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:28px;height:28px;cursor:pointer;font-size:14px;display:none}
+body.editing .slot-remove{display:block}
+/* teams */
+.team-card{background:#fff;border:2px solid var(--mint);border-radius:20px;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.team-card:hover{transform:translateY(-4px);box-shadow:0 18px 34px -22px rgba(90,92,224,.5)}
+.team-top{height:8px}
+.team-body{padding:16px 18px 20px}
+.team-header{display:flex;align-items:center;gap:10px;margin:12px 0 8px}
+.team-header .flag{font-size:28px}
+.team-header h3{font-size:20px;margin:0}
+.team-header .count{font-size:13px;color:var(--muted);font-family:var(--fb);font-weight:700}
+.team-card p{margin:0;color:var(--muted);font-size:15px}
+/* testimonials */
+.testi{background:#fff;border:2px solid var(--mint);border-radius:20px;padding:20px;display:flex;flex-direction:column}
+.testi-photo{width:84px;height:84px;border-radius:50%;flex:0 0 84px;margin-bottom:12px;font-size:11px}
+.testi-photo img{border-radius:50%}
+.testi .q-ic{color:var(--pink);width:26px;height:26px;margin-bottom:4px}
+.testi-quote{font-size:16px;color:var(--ink);font-style:italic;margin:0 0 12px}
+.testi-name{font-family:var(--fh);font-weight:600;color:var(--navy);font-size:15px;margin:0}
+.testi-name .cc{display:block;color:var(--pink);font-size:13px;font-weight:600}
+/* activities / energizers */
+.act-card{background:#fff;border:2px solid var(--mint);border-radius:18px;padding:14px;transition:transform .2s,box-shadow .2s}
+.act-card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -22px rgba(90,92,224,.5)}
+.act-card h3{font-size:16.5px;margin:12px 0 6px}
+.act-card p{margin:0;color:var(--muted);font-size:14.5px}
+.en-card .ic-circle{background:var(--yellow);color:#8a6d00}
+/* outcomes + resources */
+.res-grid,.tile-grid{display:grid;gap:18px}
+.res-card{background:#fff;border:2px solid var(--mint);border-radius:20px;padding:20px;position:relative;display:flex;flex-direction:column;gap:6px}
+.res-card .ic-circle{width:48px;height:48px;border-radius:14px;background:var(--mint);color:var(--indigo);display:flex;align-items:center;justify-content:center;margin-bottom:6px}
+.res-card .ic-circle svg{width:25px;height:25px}
+.res-title{font-family:var(--fh);font-weight:700;color:var(--navy);font-size:18px;margin:0}
+.res-desc{color:var(--muted);font-size:15px;margin:0}
+.dl-btn{display:inline-flex;align-items:center;gap:8px;background:var(--indigo);color:#fff;border-radius:30px;padding:9px 16px;font-family:var(--fh);font-weight:600;font-size:14px;margin-top:8px;align-self:flex-start;border:none;cursor:pointer}
+.dl-btn svg{width:16px;height:16px}
+.dl-btn.soon{background:var(--mint);color:var(--teal-d);cursor:default}
+.dl-meta{font-size:12px;color:var(--muted);margin-top:4px}
+.up-btn{display:none;margin-top:8px;background:#fff;border:2px solid var(--teal);color:var(--teal-d);border-radius:30px;padding:7px 14px;font-family:var(--fh);font-weight:600;font-size:13px;cursor:pointer;align-self:flex-start}
+body.editing .up-btn{display:inline-block}
+.remove-btn{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.5);color:#fff;border:none;border-radius:50%;width:26px;height:26px;cursor:pointer;display:none}
+body.editing .remove-btn{display:block}
+.add-tile{display:none;border:2px dashed var(--teal);border-radius:20px;background:#f5fbfb;color:var(--teal-d);font-family:var(--fh);font-weight:600;align-items:center;justify-content:center;min-height:120px;cursor:pointer;font-size:15px}
+body.editing .add-tile{display:flex}
+.handbook{background:linear-gradient(120deg,var(--indigo),var(--pink));border-radius:24px;padding:30px;color:#fff;text-align:center;margin-top:26px}
+.handbook h3{color:#fff;font-size:24px;margin:0 0 8px}
+.handbook p{color:rgba(255,255,255,.9);margin:0 0 16px}
+#handbook-dl{display:flex;gap:10px;justify-content:center;align-items:center;flex-wrap:wrap}
+#handbook-dl .dl-btn{background:#fff;color:var(--indigo-d)}
+#handbook-dl .dl-btn.soon{background:rgba(255,255,255,.25);color:#fff}
+#handbook-dl .up-btn{border-color:#fff;color:#fff;background:transparent}
+#handbook-dl .dl-meta{color:rgba(255,255,255,.85)}
+/* photo wall */
+.wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.wall-item{position:relative;aspect-ratio:1;border-radius:14px;overflow:hidden;background:var(--mint);cursor:pointer}
+.wall-item img{width:100%;height:100%;object-fit:cover}
+.empty-note{display:none;color:var(--muted);font-style:italic;padding:16px 0}
+/* falken */
+.falken{background:#fff;border:2px solid var(--mint);border-radius:22px;padding:26px}
+.falken .fl-head{display:flex;align-items:center;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.falken .fl-head img{height:58px;width:auto}
+.falken h3{font-size:22px;margin:0}
+.link-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.cbtn{display:inline-flex;align-items:center;gap:8px;background:var(--mint);color:var(--indigo-d);border-radius:30px;padding:9px 16px;font-family:var(--fh);font-weight:600;font-size:14px}
+.cbtn:hover{background:var(--indigo);color:#fff}
+.cbtn svg{width:17px;height:17px}
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s,transform .6s}
+.reveal.in{opacity:1;transform:none}
+/* footer */
+footer{background:var(--navy);color:#fff;padding:40px 0 30px;text-align:center;margin-top:30px}
+footer .logobar .lg svg{height:40px}
+footer .logobar .lg img{height:46px;filter:brightness(0) invert(1) opacity(.95)}
+footer .foot-dis{max-width:720px;margin:18px auto 0;color:rgba(255,255,255,.75);font-size:13px}
+footer .foot-dis a{color:#fff}
+/* toolbar */
+.edit-toolbar{position:fixed;right:16px;bottom:16px;z-index:70;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.tb-btn{background:var(--indigo);color:#fff;border:none;border-radius:30px;padding:11px 18px;font-family:var(--fh);font-weight:600;font-size:14px;cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.5)}
+.tb-btn.active{background:var(--pink)}
+.tb-small{background:#fff;color:var(--navy);border:2px solid var(--mint);display:none}
+#edit-status{background:rgba(36,42,99,.92);color:#fff;font-size:12.5px;padding:6px 12px;border-radius:20px;max-width:230px;text-align:right}
+#edit-status:empty{display:none}
+#backTop{position:fixed;left:16px;bottom:16px;z-index:65;width:46px;height:46px;border-radius:50%;background:var(--pink);color:#fff;border:none;font-size:20px;cursor:pointer;opacity:0;pointer-events:none;transition:opacity .25s}
+#backTop.show{opacity:1;pointer-events:auto}
+/* modal + lightbox */
+.modal,.lightbox{position:fixed;inset:0;background:rgba(20,22,50,.8);z-index:80;display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open,.lightbox.open{display:flex}
+.modal-box{background:#fff;border-radius:20px;max-width:640px;width:100%;max-height:86vh;overflow:auto;padding:26px;position:relative}
+.modal-close,.lb-close{position:absolute;top:12px;right:14px;background:var(--mint);border:none;border-radius:50%;width:34px;height:34px;font-size:18px;cursor:pointer;color:var(--navy)}
+.lb-close{background:rgba(255,255,255,.2);color:#fff}
+.lightbox img{max-width:92vw;max-height:82vh;border-radius:12px}
+.lb-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);color:#fff;border:none;width:48px;height:48px;border-radius:50%;font-size:24px;cursor:pointer}
+#lb-prev{left:14px}#lb-next{right:14px}#lb-count{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);color:#fff;font-family:var(--fh)}
+.detail-btn{display:none}
+@media(max-width:960px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:760px){.nav-links{display:none;position:absolute;top:62px;left:0;right:0;background:#fff;flex-direction:column;padding:10px 16px;border-bottom:2px solid var(--mint)}.nav-links.open{display:flex}.navToggle{display:block}
+ .g2,.g3,.g4,.en-grid{grid-template-columns:1fr}.g2.keep2,.act-grid{grid-template-columns:repeat(2,1fr)}}
+@media print{.nav,.edit-toolbar,#backTop,#scrollProg,.navToggle,.up-btn,.remove-btn,.add-tile{display:none!important}body{background:#fff}section{padding:24px 0;break-inside:avoid}}
+</style></head>
+<body>
+<div id="scrollProg"></div>
+<nav class="nav"><div class="wrap">
+  <div class="brand">Roots <b>&amp;</b> Roads</div>
+  <button class="navToggle" id="navToggle">☰</button>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">Project</a><a href="#erasmus">Erasmus+</a><a href="#teams">Teams</a>
+    <a href="#voices">Voices</a><a href="#objectives">Objectives</a><a href="#activities">Activities</a>
+    <a href="#outcomes">Outcomes</a><a href="#energizers">Energizers</a><a href="#methods">Methods</a>
+    <a href="#stereotypes">Stereotypes</a><a href="#falken">Falken</a>
+  </div>
+</div></nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="logobar">
+      <span class="lg"><svg viewBox='0 0 212 60' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Co-funded by the European Union'><rect x='0' y='11.0' width='57' height='38' fill='#003399'/><polygon points='28.50,15.22 28.97,16.68 30.51,16.68 29.27,17.58 29.74,19.04 28.50,18.14 27.26,19.04 27.73,17.58 26.49,16.68 28.03,16.68' fill='#FFCC00'/><polygon points='34.83,16.92 35.31,18.38 36.84,18.38 35.60,19.28 36.07,20.74 34.83,19.84 33.59,20.74 34.07,19.28 32.83,18.38 34.36,18.38' fill='#FFCC00'/><polygon points='39.47,21.56 39.94,23.01 41.48,23.01 40.24,23.92 40.71,25.37 39.47,24.47 38.23,25.37 38.70,23.92 37.46,23.01 39.00,23.01' fill='#FFCC00'/><polygon points='41.17,27.89 41.64,29.35 43.17,29.35 41.93,30.25 42.41,31.71 41.17,30.81 39.93,31.71 40.40,30.25 39.16,29.35 40.69,29.35' fill='#FFCC00'/><polygon points='39.47,34.22 39.94,35.68 41.48,35.68 40.24,36.58 40.71,38.04 39.47,37.14 38.23,38.04 38.70,36.58 37.46,35.68 39.00,35.68' fill='#FFCC00'/><polygon points='34.83,38.86 35.31,40.32 36.84,40.32 35.60,41.22 36.07,42.68 34.83,41.78 33.59,42.68 34.07,41.22 32.83,40.32 34.36,40.32' fill='#FFCC00'/><polygon points='28.50,40.56 28.97,42.01 30.51,42.01 29.27,42.92 29.74,44.37 28.50,43.47 27.26,44.37 27.73,42.92 26.49,42.01 28.03,42.01' fill='#FFCC00'/><polygon points='22.17,38.86 22.64,40.32 24.17,40.32 22.93,41.22 23.41,42.68 22.17,41.78 20.93,42.68 21.40,41.22 20.16,40.32 21.69,40.32' fill='#FFCC00'/><polygon points='17.53,34.22 18.00,35.68 19.54,35.68 18.30,36.58 18.77,38.04 17.53,37.14 16.29,38.04 16.76,36.58 15.52,35.68 17.06,35.68' fill='#FFCC00'/><polygon points='15.83,27.89 16.31,29.35 17.84,29.35 16.60,30.25 17.07,31.71 15.83,30.81 14.59,31.71 15.07,30.25 13.83,29.35 15.36,29.35' fill='#FFCC00'/><polygon points='17.53,21.56 18.00,23.01 19.54,23.01 18.30,23.92 18.77,25.37 17.53,24.47 16.29,25.37 16.76,23.92 15.52,23.01 17.06,23.01' fill='#FFCC00'/><polygon points='22.17,16.92 22.64,18.38 24.17,18.38 22.93,19.28 23.41,20.74 22.17,19.84 20.93,20.74 21.40,19.28 20.16,18.38 21.69,18.38' fill='#FFCC00'/><text x='71' y='28.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>Co-funded by the</text><text x='71' y='46.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>European Union</text></svg></span>
+      <span class="lg"><svg version="1.1" viewBox="0 0 312.13 89.326" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <defs>     <g id="et_a">       <g id="et_b">         <path id="et_g" transform="rotate(18 3.1569 -.5)" d="m0 0v1h0.5z"/>         <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_g"/>       </g>       <g id="et_c">         <use transform="rotate(72)" width="100%" height="100%" xlink:href="#et_b"/>         <use transform="rotate(144)" width="100%" height="100%" xlink:href="#et_b"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_c"/>     </g>   </defs>   <path d="m131.16 72.78h-18.53v-28.125h18.53v3.3245h-14.79v7.707h14.79v3.3242h-14.79v10.446h14.79v3.324" fill="#2765b2" stroke-width=".26458"/>   <path d="m148.52 55.56h-0.18885c-0.52885-0.12601-1.0418-0.21696-1.5392-0.27384-0.49773-0.0569-1.0864-0.0853-1.7661-0.0853-1.0957 0-2.1534 0.24276-3.1734 0.72729-1.0203 0.48522-2.0026 1.1115-2.9469 1.8798v14.978h-3.551v-21.099h3.551v3.1168c1.4102-1.1331 2.6538-1.9361 3.7306-2.4084 1.0765-0.47196 2.1749-0.70842 3.2962-0.70842 0.6168 0 1.0639 0.0162 1.3411 0.0476 0.27681 0.0311 0.6922 0.0913 1.2465 0.17893v3.646" fill="#2765b2" stroke-width=".26458"/>   <path d="m164.08 67.59v-5.8743c-1.0825 0.0624-2.3578 0.15775-3.8246 0.28268-1.4671 0.1261-2.6293 0.3089-3.4851 0.54806-1.02 0.29001-1.8448 0.74025-2.4745 1.3507-0.62971 0.61095-0.94424 1.4513-0.94424 2.5218 0 1.2086 0.36512 2.1188 1.0957 2.7294 0.73025 0.61081 1.8445 0.91569 3.343 0.91569 1.2468 0 2.3862-0.24209 3.4189-0.72654 1.0322-0.48525 1.9897-1.0673 2.8707-1.7473zm3.5327 5.194h-3.5327v-2.2473c-0.31454 0.21368-0.73951 0.51302-1.2746 0.89662-0.53546 0.38433-1.0547 0.68987-1.5584 0.91646-0.59166 0.2894-1.272 0.53179-2.0399 0.72697-0.7683 0.19546-1.6685 0.293-2.7009 0.293-1.902 0-3.5137-0.62968-4.8361-1.8888-1.3223-1.2595-1.9834-2.8649-1.9834-4.8167 0-1.5994 0.34295-2.8932 1.0295-3.8814 0.68593-0.98859 1.6649-1.7662 2.9371-2.3327 1.2846-0.56716 2.8263-0.95085 4.6276-1.1526 1.8008-0.20142 3.7335-0.35243 5.7986-0.45334v-0.54774c0-0.80526-0.14155-1.4733-0.42434-2.0025-0.28377-0.52824-0.6899-0.9443-1.2191-1.2466-0.50303-0.2894-1.1076-0.4845-1.8131-0.58539-0.70543-0.10054-1.442-0.15114-2.2099-0.15114-0.93199 0-1.9708 0.1227-3.1165 0.36843-1.1463 0.2454-2.33 0.60127-3.551 1.0669h-0.18918v-3.6076c0.69255-0.18852 1.6933-0.39656 3.0033-0.62341 1.3094-0.22655 2.6002-0.33967 3.8722-0.33967 1.4856 0 2.7794 0.1227 3.8814 0.36809 1.102 0.24538 2.0561 0.66476 2.8615 1.2564 0.79407 0.57944 1.398 1.3289 1.814 2.2473 0.4154 0.91974 0.62341 2.059 0.62341 3.4189v14.318" fill="#2765b2" stroke-width=".26458"/>   <path d="m188.18 66.7c0 1.9269-0.7964 3.5078-2.3892 4.7413-1.5938 1.2343-3.7687 1.8514-6.5262 1.8514-1.5617 0-2.9938-0.18617-4.2974-0.55759-1.3028-0.37144-2.3958-0.77684-3.2769-1.218v-3.9857h0.18852c1.1208 0.84376 2.3674 1.5141 3.7402 2.0115 1.3725 0.49805 2.6884 0.74609 3.9478 0.74609 1.5614 0 2.7829-0.25128 3.6639-0.75538 0.88172-0.50374 1.3226-1.2967 1.3226-2.3802 0-0.83042-0.23912-1.4605-0.71768-1.8888-0.4789-0.42762-1.398-0.79312-2.7575-1.0954-0.50403-0.11305-1.1615-0.24534-1.9741-0.39651-0.81195-0.15114-1.5521-0.31483-2.2195-0.49117-1.8508-0.49147-3.1639-1.2118-3.9383-2.1627-0.77444-0.95086-1.1615-2.1186-1.1615-3.5044 0-0.86878 0.17959-1.687 0.53811-2.4549 0.35917-0.7683 0.90355-1.4549 1.6341-2.0588 0.7048-0.59235 1.6021-1.0613 2.6919-1.4076 1.0891-0.34629 2.3075-0.51925 3.655-0.51925 1.2591 0 2.534 0.15445 3.8246 0.46236 1.2908 0.3089 2.3644 0.68363 3.221 1.1242v3.7968h-0.18885c-0.90686-0.66707-2.0088-1.231-3.306-1.6904-1.2971-0.46006-2.5681-0.68991-3.815-0.68991-1.2971 0-2.3925 0.24871-3.2864 0.74613-0.89495 0.49808-1.3418 1.2376-1.3418 2.2195 0 0.86879 0.27054 1.5237 0.81259 1.9642 0.52917 0.44119 1.3848 0.80036 2.5691 1.077 0.65418 0.15101 1.3881 0.30218 2.2 0.45333 0.81259 0.15115 1.4889 0.29001 2.031 0.41545 1.649 0.37804 2.921 1.0262 3.8156 1.9456 0.89397 0.93197 1.3408 2.166 1.3408 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m222.74 72.78h-3.5512v-12.013c0-0.90678-0.0407-1.782-0.1227-2.6257-0.082-0.84363-0.25499-1.5174-0.51924-2.021-0.29004-0.54136-0.70543-0.95014-1.2468-1.228-0.54107-0.27649-1.3223-0.41539-2.3422-0.41539-0.99483 0-1.9893 0.24871-2.9842 0.74612-0.99483 0.49808-1.9897 1.1304-2.9845 1.8983 0.0377 0.2902 0.0691 0.62686 0.0946 1.0104 0.0251 0.38434 0.038 0.76534 0.038 1.1434v13.505h-3.5518v-12.013c0-0.93199-0.0407-1.8163-0.1227-2.654-0.082-0.83704-0.25499-1.5074-0.51924-2.0115-0.29004-0.54139-0.70543-0.94753-1.2465-1.2184-0.54139-0.27053-1.3226-0.40613-2.3422-0.40613-0.9697 0-1.9427 0.23978-2.9186 0.71768-0.976 0.47858-1.9487 1.0898-2.9184 1.8326v15.753h-3.5507v-21.099h3.5507v2.3422c1.1086-0.91842 2.2129-1.6368 3.3152-2.153 1.102-0.51594 2.2761-0.77457 3.5229-0.77457 1.4354 0 2.6535 0.30228 3.655 0.90686 1.0011 0.60425 1.7473 1.442 2.2381 2.5122 1.436-1.2092 2.7453-2.0806 3.9288-2.6161 1.184-0.53547 2.4494-0.80301 3.797-0.80301 2.3167 0 4.0259 0.70215 5.1279 2.1058 1.102 1.4046 1.653 3.3655 1.653 5.8843v13.694" fill="#2765b2" stroke-width=".26458"/>   <path d="m245.11 72.78h-3.5507v-2.3422c-1.1969 0.94427-2.3422 1.6693-3.4375 2.1722-1.0957 0.50409-2.3048 0.75576-3.6272 0.75576-2.2162 0-3.9418-0.67694-5.1755-2.0306-1.2343-1.3534-1.8504-3.3398-1.8504-5.9592v-13.695h3.5507v12.013c0 1.0704 0.0503 1.9865 0.15114 2.7488 0.10087 0.76131 0.31454 1.4131 0.64193 1.9545 0.33999 0.55438 0.78118 0.95721 1.3223 1.2091 0.54139 0.25205 1.3282 0.37734 2.3611 0.37734 0.91911 0 1.9235-0.23898 3.0125-0.71765 1.0891-0.47813 2.1067-1.0891 3.0509-1.832v-15.754h3.5507v21.099" fill="#2765b2" stroke-width=".26458"/>   <path d="m265.85 66.7c0 1.9269-0.7964 3.5078-2.3895 4.7413-1.5928 1.2343-3.7682 1.8514-6.5259 1.8514-1.5614 0-2.994-0.18617-4.2971-0.55759-1.3034-0.37144-2.3958-0.77684-3.2777-1.218v-3.9857h0.18951c1.1205 0.84376 2.3674 1.5141 3.7399 2.0115 1.3722 0.49805 2.6879 0.74609 3.9476 0.74609 1.561 0 2.7829-0.25128 3.6645-0.75538 0.88106-0.50374 1.3223-1.2967 1.3223-2.3802 0-0.83042-0.23978-1.4605-0.71768-1.8888-0.47858-0.42762-1.398-0.79312-2.7583-1.0954-0.50371-0.11305-1.1615-0.24534-1.9735-0.39651-0.81259-0.15114-1.5521-0.31483-2.2195-0.49117-1.8511-0.49147-3.1639-1.2118-3.9383-2.1627s-1.1615-2.1186-1.1615-3.5044c0-0.86878 0.17892-1.687 0.53811-2.4549 0.35917-0.7683 0.90323-1.4549 1.6338-2.0588 0.70543-0.59235 1.6027-1.0613 2.6919-1.4076 1.0888-0.34629 2.3072-0.51925 3.6544-0.51925 1.2597 0 2.534 0.15445 3.8256 0.46236 1.2905 0.3089 2.3641 0.68363 3.2205 1.1242v3.7968h-0.18918c-0.9065-0.66707-2.0085-1.231-3.3052-1.6904-1.2971-0.46006-2.5691-0.68991-3.8158-0.68991-1.2968 0-2.3925 0.24871-3.2864 0.74613-0.89397 0.49808-1.3411 1.2376-1.3411 2.2195 0 0.86879 0.27088 1.5237 0.81195 1.9642 0.52917 0.44119 1.3858 0.80036 2.5691 1.077 0.65484 0.15101 1.3881 0.30218 2.2007 0.45333 0.81195 0.15115 1.4889 0.29001 2.0304 0.41545 1.6497 0.37804 2.9215 1.0262 3.8156 1.9456 0.89396 0.93197 1.3411 2.166 1.3411 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m295.59 61.98h-10.295v10.295h-3.1353v-10.295h-10.294v-3.0226h10.294v-10.294h3.1353v10.294h10.295v3.0226" fill="#2765b2" stroke-width=".26458"/>   <g transform="matrix(.10417 0 0 .10417 16.54 16.54)" stroke-width="2.54">     <rect width="810" height="540" fill="#2765b2"/>     <g transform="matrix(30,0,0,30,405,270)" fill="#fc0">       <use y="-6" width="100%" height="100%" xlink:href="#et_a"/>       <use y="6" width="100%" height="100%" xlink:href="#et_a"/>       <g id="et_f">         <use x="-6" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(216 -2.3442 -2.1107)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(144,-2.1107,-2.3442)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72,-4.6626,-2.0759)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72 -5.0759 .5335)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_f"/>     </g>   </g> </svg></span>
+      <span class="lg"><img src="falken-logo.png" alt="Falken Bildungs- und Freizeitwerk Hagen e.V."></span>
+    </div>
+    <div class="hero-bubble reveal in">
+      <span class="hero-badge">Erasmus+ Youth Exchange · Digital Handbook</span>
+      <h1>Roots &amp; Roads</h1>
+      <div class="hero-subtitle">Inclusion of Roma, Migrant and Refugee Youth</div>
+      <div class="hero-meta"><span>📅 2 &ndash; 11 November 2026</span><span>📍 Bansko, Bulgaria</span><span>🏨 Royal Bansko Family Apart Hotel</span></div>
+      <div class="hero-flags">🇧🇬 🇩🇪 🇬🇷 🇹🇷 🇲🇰 🇷🇴</div>
+    </div>
+  </div>
+</header>
+
+<section id="about"><div class="wrap">
+  <p class="section-label">About the project</p>
+  <h2 class="section-title reveal">Roots to stand on, roads to walk together</h2>
+  <div class="about-text reveal">
+    <p>&ldquo;Roots &amp; Roads: Inclusion of Roma, Migrant and Refugee Youth&rdquo; is a youth exchange bringing together 36 young people from 6 partner countries, hosted in Bansko, Bulgaria, from 2 to 11 November 2026.</p>
+    <p>The project responds to the ongoing challenges of discrimination, social exclusion and unequal participation faced by Roma, migrant and refugee youth across Europe. The exchange strengthens active citizenship, intercultural competences and anti-discrimination skills through shared learning and cooperation.</p>
+    <p>Using non-formal learning methods, participants take part in Living Library sessions, intercultural workshops, community mapping, forum theatre and creative activities, and they build real friendships across borders.</p>
+  </div>
+</div></section>
+
+<section id="erasmus" style="background:#f6fbfb"><div class="wrap">
+  <p class="section-label">The programme</p>
+  <h2 class="section-title reveal">Erasmus+ &amp; Youthpass</h2>
+  <p class="lead reveal">What the programme behind this exchange actually is, and the certificate every participant takes home.</p>
+  <div class="grid g4"><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><h3>Erasmus+ Youth</h3><p>Erasmus+ is the EU programme for education, training, youth and sport. Its youth strand funds learning mobility and cooperation so young people can grow, meet across borders and take part in society.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div><h3>KA152 Youth Exchange</h3><p>Roots &amp; Roads is a KA152 Youth Exchange: short group mobility where young people from several countries live and learn together through non-formal activities around a shared theme.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><h3>Youthpass</h3><p>Every participant receives a Youthpass, a European certificate that describes what they learned and makes non-formal learning visible for study, work and life.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Eight key competences</h3><p>Youthpass is built on the eight key competences for lifelong learning, from multilingual and personal and social competence to cultural awareness and citizenship.</p></div></div>
+</div></section>
+
+<section id="teams"><div class="wrap">
+  <p class="section-label">Six countries</p>
+  <h2 class="section-title reveal">Meet the teams</h2>
+  <p class="lead reveal">Six national teams, one shared road. Add each group photo and a short line about the team.</p>
+  <div class="grid g3"><div class="team-card reveal"><div class="team-top" style="background:#00966E"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the Bulgaria group photo</span></div>
+      <div class="team-header"><span class="flag">🇧🇬</span><div><h3>Bulgaria</h3><div class="count">Change, Explore and Grow by Exchange Association · host</div></div></div>
+      <p>Write a short line about the Bulgaria team here.</p></div></div><div class="team-card reveal"><div class="team-top" style="background:#E30A17"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the Türkiye group photo</span></div>
+      <div class="team-header"><span class="flag">🇹🇷</span><div><h3>Türkiye</h3><div class="count">Dadya Youth Council</div></div></div>
+      <p>Write a short line about the Türkiye team here.</p></div></div><div class="team-card reveal"><div class="team-top" style="background:#0D5EAF"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the Greece group photo</span></div>
+      <div class="team-header"><span class="flag">🇬🇷</span><div><h3>Greece</h3><div class="count">GRO2BE</div></div></div>
+      <p>Write a short line about the Greece team here.</p></div></div><div class="team-card reveal"><div class="team-top" style="background:#E8A200"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the Romania group photo</span></div>
+      <div class="team-header"><span class="flag">🇷🇴</span><div><h3>Romania</h3><div class="count">Asociatia STEM UP</div></div></div>
+      <p>Write a short line about the Romania team here.</p></div></div><div class="team-card reveal"><div class="team-top" style="background:#D20000"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the North Macedonia group photo</span></div>
+      <div class="team-header"><span class="flag">🇲🇰</span><div><h3>North Macedonia</h3><div class="count">EUROMOVE NMK</div></div></div>
+      <p>Write a short line about the North Macedonia team here.</p></div></div><div class="team-card reveal"><div class="team-top" style="background:#111111"></div>
+      <div class="team-body"><div class="team-photo-slot"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add the Germany group photo</span></div>
+      <div class="team-header"><span class="flag">🇩🇪</span><div><h3>Germany</h3><div class="count">Falken Bildungs- und Freizeitwerk Hagen e.V. · coordinator</div></div></div>
+      <p>Write a short line about the Germany team here.</p></div></div></div>
+</div></section>
+
+<section id="voices" style="background:#fff6fa"><div class="wrap">
+  <p class="section-label">In their own words</p>
+  <h2 class="section-title reveal">Participant voices</h2>
+  <p class="lead reveal">One testimonial from each country. Add a photo and the participant&rsquo;s own words.</p>
+  <div class="grid g3"><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a Bulgaria participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇧🇬 Bulgaria</span></p></div><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a Türkiye participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇹🇷 Türkiye</span></p></div><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a Greece participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇬🇷 Greece</span></p></div><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a Romania participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇷🇴 Romania</span></p></div><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a North Macedonia participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇲🇰 North Macedonia</span></p></div><div class="testi reveal"><div class="testi-photo"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Photo</span></div>
+      <svg class="q-ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5H3v9h3c0 3-1 4-3 4zM14 21c3 0 7-1 7-8V5h-7v9h3c0 3-1 4-3 4z" fill="currentColor" stroke="none"/></svg><p class="testi-quote">Add a short testimonial from a Germany participant here, in their own words.</p>
+      <p class="testi-name">Participant name<span class="cc">🇩🇪 Germany</span></p></div></div>
+</div></section>
+
+<section id="objectives"><div class="wrap">
+  <p class="section-label">Why we do it</p>
+  <h2 class="section-title reveal">Project objectives</h2>
+  <div class="grid g4"><div class="card reveal"><div class="num-badge">01</div><h3>Empower young people</h3><p>Empower Roma, migrant and refugee youth to participate actively in their communities and civic life.</p></div><div class="card reveal alt"><div class="num-badge">02</div><h3>Build intercultural competences</h3><p>Develop intercultural competences and strengthen understanding between young people from different cultural and social backgrounds.</p></div><div class="card reveal"><div class="num-badge">03</div><h3>Challenge discrimination</h3><p>Promote anti-discrimination and inclusion by challenging stereotypes, prejudice and social exclusion.</p></div><div class="card reveal alt"><div class="num-badge">04</div><h3>Act locally afterwards</h3><p>Equip participants with practical tools to create inclusive local actions and promote equal participation after the project.</p></div></div>
+</div></section>
+
+<section id="activities" style="background:#f6fbfb"><div class="wrap">
+  <p class="section-label">What we do</p>
+  <h2 class="section-title reveal">Activities</h2>
+  <p class="lead reveal">The non-formal activities of the week. Add a photo to each as the exchange goes on.</p>
+  <div class="grid g3 act-grid"><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Mission Impossible</h3><p>A fast team-building scavenger challenge that breaks the ice, mixes the countries and turns strangers into crews on day one.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Human Library</h3><p>People become the "books". You borrow a person and talk one-to-one, so a real story replaces an assumption.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Forum Theatre</h3><p>Short scenes of exclusion are played out, then the audience stops the action and steps in to rewrite what happens next.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Awareness Videos</h3><p>Teams become film crews and shoot short campaign videos on inclusion and stereotypes for a real online audience.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Open Discussions</h3><p>Facilitated dialogues, including a World Café, where everyone speaks and the ideas feed the joint declaration.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Country Realities</h3><p>Each team researches and presents the real situation of Roma, migrant and refugee youth in their own country.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>EU Directives on Inclusion, Diversity &amp; Anti-racism</h3><p>An interactive look at the rights and rules that protect people, from the EU Charter to the Racial Equality Directive.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Case Studies</h3><p>Groups draft short, anonymised case studies from the exchange, ready to share with the SALTO Inclusion &amp; Diversity pool.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Interviews with Locals</h3><p>Participants meet Bansko residents and ask them about community, belonging and everyday life.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Cultural Nights</h3><p>Every country shares its food, music, language and stories in a relaxed evening of exchange.</p></div></div>
+</div></section>
+
+<section id="outcomes"><div class="wrap">
+  <p class="section-label">What we leave behind</p>
+  <h2 class="section-title reveal">Project outcomes</h2>
+  <p class="lead reveal">The lasting results of Roots &amp; Roads.</p>
+  <div class="grid g3"><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><h3>Joint Declaration</h3><p>A joint declaration on youth inclusion in the Western Balkans&ndash;EU corridor, written together by the participants.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/></svg></div><h3>5 Local Follow-up Actions</h3><p>Five concrete inclusion actions the teams plan to run back home after the exchange.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>Case Studies</h3><p>Anonymised case studies prepared for the SALTO Inclusion &amp; Diversity resource pool.</p></div></div>
+
+  <h3 class="section-title reveal" style="font-size:24px;margin:34px 0 8px">Downloads</h3>
+  <p class="lead reveal" style="margin-bottom:16px">Upload the finished outcome files here when they are ready.</p>
+  <div class="res-grid g3" id="resources"></div>
+  <p class="empty-note" id="res-empty">In edit mode you can add resource cards and upload files.</p>
+  <button type="button" class="add-tile" id="add-res-btn" style="margin-top:14px">＋ Add a resource</button>
+
+  <div class="handbook reveal">
+    <h3>The Roots &amp; Roads Handbook</h3>
+    <p>Download the full handbook as a PDF, or upload a new version in edit mode.</p>
+    <div id="handbook-dl"></div>
+  </div>
+
+  <h3 class="section-title reveal" style="font-size:24px;margin:34px 0 10px">Photo gallery</h3>
+  <div class="wall" id="photo-wall"></div>
+  <p class="empty-note" id="wall-empty">In edit mode, add photos from the exchange.</p>
+  <button type="button" class="add-tile" id="add-photo-btn" style="margin-top:14px;display:none">＋ Add photos</button>
+</div></section>
+
+<section id="energizers" style="background:#fffdf3"><div class="wrap">
+  <p class="section-label">To wake the room</p>
+  <h2 class="section-title reveal">Energizers</h2>
+  <p class="lead reveal">The games that kept the energy high between sessions. Add a photo of each in action.</p>
+  <div class="grid g3 act-grid en-grid"><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Follow the Leader</h3><p>The group copies a secret leader&rsquo;s moves while one person in the middle tries to guess who is leading.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Imaginary Bunny</h3><p>A fast call-and-response game where an invisible bunny is passed around the circle, faster and faster.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Stuck in the Mud</h3><p>A tag game: anyone tagged freezes "stuck in the mud" until a teammate crawls under to free them.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>He-Ha-Ho</h3><p>An energy circle where claps and the shouts "He! Ha! Ho!" are passed around until everyone is awake.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>The Wind Blows</h3><p>"The wind blows for everyone who&hellip;" and all who share that swap seats across the circle.</p></div><div class="act-card reveal"><div class="photo-frame"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/></svg><span>Add a photo</span></div><h3>Broken Phone</h3><p>A whispered message travels around the circle and everyone laughs at how it transforms on the way.</p></div></div>
+</div></section>
+
+<section id="methods"><div class="wrap">
+  <p class="section-label">How we work</p>
+  <h2 class="section-title reveal">Methods for inclusion &amp; anti-racism</h2>
+  <p class="lead reveal">The non-formal approach behind every activity.</p>
+  <div class="grid g3"><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Non-formal learning</h3><p>Learning by doing and reflecting, in a relaxed setting where everyone takes part and nobody is graded.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>A safe space &amp; group agreement</h3><p>The group writes its own rules together so everyone can speak, disagree with respect and opt out of anything too personal.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Start from lived experience</h3><p>Activities begin from real life and community, not from theory, and no one has to speak for a whole group.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Challenge the behaviour, not the person</h3><p>We name exclusion and stereotypes and practise interrupting them, while keeping respect for every person in the room.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Peer learning &amp; reflection</h3><p>Daily reflection groups and Youthpass turn the experience into learning each person can name and reuse.</p></div><div class="card reveal"><div class="ic-circle"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></svg></div><h3>Creative and embodied methods</h3><p>Theatre, film, mapping and storytelling let people explore inclusion with their whole selves, not only with words.</p></div></div>
+</div></section>
+
+<section id="stereotypes" style="background:#f6fbfb"><div class="wrap">
+  <p class="section-label">Know the enemy</p>
+  <h2 class="section-title reveal">Stereotypes &amp; prejudice</h2>
+  <p class="lead reveal">A short, shared language for the things this project works against.</p>
+  <div class="grid g3"><div class="card reveal"><div class="num-badge">01</div><h3>What is a stereotype</h3><p>A fixed, oversimplified picture of a whole group ("they are all&hellip;"). It is a mental shortcut that ignores the real, different people inside the group.</p></div><div class="card reveal"><div class="num-badge">02</div><h3>What is prejudice</h3><p>A judgement or feeling about someone because of the group they belong to, formed before you actually know them.</p></div><div class="card reveal"><div class="num-badge">03</div><h3>What is discrimination</h3><p>When a stereotype or prejudice turns into action: treating someone worse, leaving them out, or denying them something because of who they are.</p></div><div class="card reveal"><div class="num-badge">04</div><h3>How it grows</h3><p>Stereotype leads to prejudice, prejudice leads to discrimination, and unchecked discrimination can harden into exclusion and even violence. It can be stopped at any step.</p></div><div class="card reveal"><div class="num-badge">05</div><h3>Antigypsyism &amp; racism</h3><p>Specific, long-standing prejudice against Roma, and racism against migrants and refugees, remain widespread in Europe. Naming them is the first step to ending them.</p></div><div class="card reveal"><div class="num-badge">06</div><h3>How to interrupt it</h3><p>Meet the person behind the label, ask instead of assume, speak up as a bystander, and share real stories that break the stereotype.</p></div></div>
+</div></section>
+
+<section id="falken"><div class="wrap">
+  <p class="section-label">The coordinator</p>
+  <h2 class="section-title reveal">About Falken (FBF Hagen)</h2>
+  <div class="falken reveal">
+    <div class="fl-head"><img src="falken-logo.png" alt="Falken"><h3>Falken Bildungs- und Freizeitwerk Hagen e.V.</h3></div>
+    <p>FBF Hagen has decades of experience in non-formal youth education and community development. Its core staff and many volunteers are professionally trained youth educators and social workers.</p>
+    <p>The FBF is well integrated into Hagen&rsquo;s social infrastructure, working with schools, municipal agencies and migrant self-organisations. Over the years the Falken have run countless local projects, from educational workshops to cultural festivals, often with a focus on diversity and social justice.</p>
+    <p>FBF has taken part in multiple Erasmus+ initiatives, bringing international expertise back to the local community, and combines grassroots experience through its three youth centres with EU project-management competence.</p>
+    <div class="link-row">
+      <a class="cbtn" href="https://www.fbf-hagen.de" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/></svg><span>www.fbf-hagen.de</span></a>
+      <a class="cbtn" href="mailto:info@fbf-hagen.de"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg><span>info@fbf-hagen.de</span></a>
+      <a class="cbtn" href="https://www.instagram.com/fbf_hagenprojekt" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><span>@fbf_hagenprojekt</span></a>
+      <a class="cbtn" href="https://www.facebook.com/FBFHagen" target="_blank" rel="noopener"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg><span>FBFHagen</span></a>
+    </div>
+  </div>
+</div></section>
+
+<footer>
+  <div class="wrap">
+    <div class="logobar">
+      <span class="lg"><svg viewBox='0 0 212 60' xmlns='http://www.w3.org/2000/svg' role='img' aria-label='Co-funded by the European Union'><rect x='0' y='11.0' width='57' height='38' fill='#003399'/><polygon points='28.50,15.22 28.97,16.68 30.51,16.68 29.27,17.58 29.74,19.04 28.50,18.14 27.26,19.04 27.73,17.58 26.49,16.68 28.03,16.68' fill='#FFCC00'/><polygon points='34.83,16.92 35.31,18.38 36.84,18.38 35.60,19.28 36.07,20.74 34.83,19.84 33.59,20.74 34.07,19.28 32.83,18.38 34.36,18.38' fill='#FFCC00'/><polygon points='39.47,21.56 39.94,23.01 41.48,23.01 40.24,23.92 40.71,25.37 39.47,24.47 38.23,25.37 38.70,23.92 37.46,23.01 39.00,23.01' fill='#FFCC00'/><polygon points='41.17,27.89 41.64,29.35 43.17,29.35 41.93,30.25 42.41,31.71 41.17,30.81 39.93,31.71 40.40,30.25 39.16,29.35 40.69,29.35' fill='#FFCC00'/><polygon points='39.47,34.22 39.94,35.68 41.48,35.68 40.24,36.58 40.71,38.04 39.47,37.14 38.23,38.04 38.70,36.58 37.46,35.68 39.00,35.68' fill='#FFCC00'/><polygon points='34.83,38.86 35.31,40.32 36.84,40.32 35.60,41.22 36.07,42.68 34.83,41.78 33.59,42.68 34.07,41.22 32.83,40.32 34.36,40.32' fill='#FFCC00'/><polygon points='28.50,40.56 28.97,42.01 30.51,42.01 29.27,42.92 29.74,44.37 28.50,43.47 27.26,44.37 27.73,42.92 26.49,42.01 28.03,42.01' fill='#FFCC00'/><polygon points='22.17,38.86 22.64,40.32 24.17,40.32 22.93,41.22 23.41,42.68 22.17,41.78 20.93,42.68 21.40,41.22 20.16,40.32 21.69,40.32' fill='#FFCC00'/><polygon points='17.53,34.22 18.00,35.68 19.54,35.68 18.30,36.58 18.77,38.04 17.53,37.14 16.29,38.04 16.76,36.58 15.52,35.68 17.06,35.68' fill='#FFCC00'/><polygon points='15.83,27.89 16.31,29.35 17.84,29.35 16.60,30.25 17.07,31.71 15.83,30.81 14.59,31.71 15.07,30.25 13.83,29.35 15.36,29.35' fill='#FFCC00'/><polygon points='17.53,21.56 18.00,23.01 19.54,23.01 18.30,23.92 18.77,25.37 17.53,24.47 16.29,25.37 16.76,23.92 15.52,23.01 17.06,23.01' fill='#FFCC00'/><polygon points='22.17,16.92 22.64,18.38 24.17,18.38 22.93,19.28 23.41,20.74 22.17,19.84 20.93,20.74 21.40,19.28 20.16,18.38 21.69,18.38' fill='#FFCC00'/><text x='71' y='28.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>Co-funded by the</text><text x='71' y='46.0' font-family="Chakra Petch, Arial, sans-serif" font-size='14.5' font-weight='600' fill='#1a1a2e'>European Union</text></svg></span>
+      <span class="lg"><svg version="1.1" viewBox="0 0 312.13 89.326" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">   <defs>     <g id="et_a">       <g id="et_b">         <path id="et_g" transform="rotate(18 3.1569 -.5)" d="m0 0v1h0.5z"/>         <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_g"/>       </g>       <g id="et_c">         <use transform="rotate(72)" width="100%" height="100%" xlink:href="#et_b"/>         <use transform="rotate(144)" width="100%" height="100%" xlink:href="#et_b"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_c"/>     </g>   </defs>   <path d="m131.16 72.78h-18.53v-28.125h18.53v3.3245h-14.79v7.707h14.79v3.3242h-14.79v10.446h14.79v3.324" fill="#2765b2" stroke-width=".26458"/>   <path d="m148.52 55.56h-0.18885c-0.52885-0.12601-1.0418-0.21696-1.5392-0.27384-0.49773-0.0569-1.0864-0.0853-1.7661-0.0853-1.0957 0-2.1534 0.24276-3.1734 0.72729-1.0203 0.48522-2.0026 1.1115-2.9469 1.8798v14.978h-3.551v-21.099h3.551v3.1168c1.4102-1.1331 2.6538-1.9361 3.7306-2.4084 1.0765-0.47196 2.1749-0.70842 3.2962-0.70842 0.6168 0 1.0639 0.0162 1.3411 0.0476 0.27681 0.0311 0.6922 0.0913 1.2465 0.17893v3.646" fill="#2765b2" stroke-width=".26458"/>   <path d="m164.08 67.59v-5.8743c-1.0825 0.0624-2.3578 0.15775-3.8246 0.28268-1.4671 0.1261-2.6293 0.3089-3.4851 0.54806-1.02 0.29001-1.8448 0.74025-2.4745 1.3507-0.62971 0.61095-0.94424 1.4513-0.94424 2.5218 0 1.2086 0.36512 2.1188 1.0957 2.7294 0.73025 0.61081 1.8445 0.91569 3.343 0.91569 1.2468 0 2.3862-0.24209 3.4189-0.72654 1.0322-0.48525 1.9897-1.0673 2.8707-1.7473zm3.5327 5.194h-3.5327v-2.2473c-0.31454 0.21368-0.73951 0.51302-1.2746 0.89662-0.53546 0.38433-1.0547 0.68987-1.5584 0.91646-0.59166 0.2894-1.272 0.53179-2.0399 0.72697-0.7683 0.19546-1.6685 0.293-2.7009 0.293-1.902 0-3.5137-0.62968-4.8361-1.8888-1.3223-1.2595-1.9834-2.8649-1.9834-4.8167 0-1.5994 0.34295-2.8932 1.0295-3.8814 0.68593-0.98859 1.6649-1.7662 2.9371-2.3327 1.2846-0.56716 2.8263-0.95085 4.6276-1.1526 1.8008-0.20142 3.7335-0.35243 5.7986-0.45334v-0.54774c0-0.80526-0.14155-1.4733-0.42434-2.0025-0.28377-0.52824-0.6899-0.9443-1.2191-1.2466-0.50303-0.2894-1.1076-0.4845-1.8131-0.58539-0.70543-0.10054-1.442-0.15114-2.2099-0.15114-0.93199 0-1.9708 0.1227-3.1165 0.36843-1.1463 0.2454-2.33 0.60127-3.551 1.0669h-0.18918v-3.6076c0.69255-0.18852 1.6933-0.39656 3.0033-0.62341 1.3094-0.22655 2.6002-0.33967 3.8722-0.33967 1.4856 0 2.7794 0.1227 3.8814 0.36809 1.102 0.24538 2.0561 0.66476 2.8615 1.2564 0.79407 0.57944 1.398 1.3289 1.814 2.2473 0.4154 0.91974 0.62341 2.059 0.62341 3.4189v14.318" fill="#2765b2" stroke-width=".26458"/>   <path d="m188.18 66.7c0 1.9269-0.7964 3.5078-2.3892 4.7413-1.5938 1.2343-3.7687 1.8514-6.5262 1.8514-1.5617 0-2.9938-0.18617-4.2974-0.55759-1.3028-0.37144-2.3958-0.77684-3.2769-1.218v-3.9857h0.18852c1.1208 0.84376 2.3674 1.5141 3.7402 2.0115 1.3725 0.49805 2.6884 0.74609 3.9478 0.74609 1.5614 0 2.7829-0.25128 3.6639-0.75538 0.88172-0.50374 1.3226-1.2967 1.3226-2.3802 0-0.83042-0.23912-1.4605-0.71768-1.8888-0.4789-0.42762-1.398-0.79312-2.7575-1.0954-0.50403-0.11305-1.1615-0.24534-1.9741-0.39651-0.81195-0.15114-1.5521-0.31483-2.2195-0.49117-1.8508-0.49147-3.1639-1.2118-3.9383-2.1627-0.77444-0.95086-1.1615-2.1186-1.1615-3.5044 0-0.86878 0.17959-1.687 0.53811-2.4549 0.35917-0.7683 0.90355-1.4549 1.6341-2.0588 0.7048-0.59235 1.6021-1.0613 2.6919-1.4076 1.0891-0.34629 2.3075-0.51925 3.655-0.51925 1.2591 0 2.534 0.15445 3.8246 0.46236 1.2908 0.3089 2.3644 0.68363 3.221 1.1242v3.7968h-0.18885c-0.90686-0.66707-2.0088-1.231-3.306-1.6904-1.2971-0.46006-2.5681-0.68991-3.815-0.68991-1.2971 0-2.3925 0.24871-3.2864 0.74613-0.89495 0.49808-1.3418 1.2376-1.3418 2.2195 0 0.86879 0.27054 1.5237 0.81259 1.9642 0.52917 0.44119 1.3848 0.80036 2.5691 1.077 0.65418 0.15101 1.3881 0.30218 2.2 0.45333 0.81259 0.15115 1.4889 0.29001 2.031 0.41545 1.649 0.37804 2.921 1.0262 3.8156 1.9456 0.89397 0.93197 1.3408 2.166 1.3408 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m222.74 72.78h-3.5512v-12.013c0-0.90678-0.0407-1.782-0.1227-2.6257-0.082-0.84363-0.25499-1.5174-0.51924-2.021-0.29004-0.54136-0.70543-0.95014-1.2468-1.228-0.54107-0.27649-1.3223-0.41539-2.3422-0.41539-0.99483 0-1.9893 0.24871-2.9842 0.74612-0.99483 0.49808-1.9897 1.1304-2.9845 1.8983 0.0377 0.2902 0.0691 0.62686 0.0946 1.0104 0.0251 0.38434 0.038 0.76534 0.038 1.1434v13.505h-3.5518v-12.013c0-0.93199-0.0407-1.8163-0.1227-2.654-0.082-0.83704-0.25499-1.5074-0.51924-2.0115-0.29004-0.54139-0.70543-0.94753-1.2465-1.2184-0.54139-0.27053-1.3226-0.40613-2.3422-0.40613-0.9697 0-1.9427 0.23978-2.9186 0.71768-0.976 0.47858-1.9487 1.0898-2.9184 1.8326v15.753h-3.5507v-21.099h3.5507v2.3422c1.1086-0.91842 2.2129-1.6368 3.3152-2.153 1.102-0.51594 2.2761-0.77457 3.5229-0.77457 1.4354 0 2.6535 0.30228 3.655 0.90686 1.0011 0.60425 1.7473 1.442 2.2381 2.5122 1.436-1.2092 2.7453-2.0806 3.9288-2.6161 1.184-0.53547 2.4494-0.80301 3.797-0.80301 2.3167 0 4.0259 0.70215 5.1279 2.1058 1.102 1.4046 1.653 3.3655 1.653 5.8843v13.694" fill="#2765b2" stroke-width=".26458"/>   <path d="m245.11 72.78h-3.5507v-2.3422c-1.1969 0.94427-2.3422 1.6693-3.4375 2.1722-1.0957 0.50409-2.3048 0.75576-3.6272 0.75576-2.2162 0-3.9418-0.67694-5.1755-2.0306-1.2343-1.3534-1.8504-3.3398-1.8504-5.9592v-13.695h3.5507v12.013c0 1.0704 0.0503 1.9865 0.15114 2.7488 0.10087 0.76131 0.31454 1.4131 0.64193 1.9545 0.33999 0.55438 0.78118 0.95721 1.3223 1.2091 0.54139 0.25205 1.3282 0.37734 2.3611 0.37734 0.91911 0 1.9235-0.23898 3.0125-0.71765 1.0891-0.47813 2.1067-1.0891 3.0509-1.832v-15.754h3.5507v21.099" fill="#2765b2" stroke-width=".26458"/>   <path d="m265.85 66.7c0 1.9269-0.7964 3.5078-2.3895 4.7413-1.5928 1.2343-3.7682 1.8514-6.5259 1.8514-1.5614 0-2.994-0.18617-4.2971-0.55759-1.3034-0.37144-2.3958-0.77684-3.2777-1.218v-3.9857h0.18951c1.1205 0.84376 2.3674 1.5141 3.7399 2.0115 1.3722 0.49805 2.6879 0.74609 3.9476 0.74609 1.561 0 2.7829-0.25128 3.6645-0.75538 0.88106-0.50374 1.3223-1.2967 1.3223-2.3802 0-0.83042-0.23978-1.4605-0.71768-1.8888-0.47858-0.42762-1.398-0.79312-2.7583-1.0954-0.50371-0.11305-1.1615-0.24534-1.9735-0.39651-0.81259-0.15114-1.5521-0.31483-2.2195-0.49117-1.8511-0.49147-3.1639-1.2118-3.9383-2.1627s-1.1615-2.1186-1.1615-3.5044c0-0.86878 0.17892-1.687 0.53811-2.4549 0.35917-0.7683 0.90323-1.4549 1.6338-2.0588 0.70543-0.59235 1.6027-1.0613 2.6919-1.4076 1.0888-0.34629 2.3072-0.51925 3.6544-0.51925 1.2597 0 2.534 0.15445 3.8256 0.46236 1.2905 0.3089 2.3641 0.68363 3.2205 1.1242v3.7968h-0.18918c-0.9065-0.66707-2.0085-1.231-3.3052-1.6904-1.2971-0.46006-2.5691-0.68991-3.8158-0.68991-1.2968 0-2.3925 0.24871-3.2864 0.74613-0.89397 0.49808-1.3411 1.2376-1.3411 2.2195 0 0.86879 0.27088 1.5237 0.81195 1.9642 0.52917 0.44119 1.3858 0.80036 2.5691 1.077 0.65484 0.15101 1.3881 0.30218 2.2007 0.45333 0.81195 0.15115 1.4889 0.29001 2.0304 0.41545 1.6497 0.37804 2.9215 1.0262 3.8156 1.9456 0.89396 0.93197 1.3411 2.166 1.3411 3.7018" fill="#2765b2" stroke-width=".26458"/>   <path d="m295.59 61.98h-10.295v10.295h-3.1353v-10.295h-10.294v-3.0226h10.294v-10.294h3.1353v10.294h10.295v3.0226" fill="#2765b2" stroke-width=".26458"/>   <g transform="matrix(.10417 0 0 .10417 16.54 16.54)" stroke-width="2.54">     <rect width="810" height="540" fill="#2765b2"/>     <g transform="matrix(30,0,0,30,405,270)" fill="#fc0">       <use y="-6" width="100%" height="100%" xlink:href="#et_a"/>       <use y="6" width="100%" height="100%" xlink:href="#et_a"/>       <g id="et_f">         <use x="-6" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(216 -2.3442 -2.1107)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(144,-2.1107,-2.3442)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72,-4.6626,-2.0759)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>         <use transform="rotate(72 -5.0759 .5335)" width="100%" height="100%" stroke-width="2.54" xlink:href="#et_a"/>       </g>       <use transform="scale(-1,1)" width="100%" height="100%" xlink:href="#et_f"/>     </g>   </g> </svg></span>
+      <span class="lg"><img src="falken-logo.png" alt="Falken"></span>
+    </div>
+    <div class="foot-dis"><p>Roots &amp; Roads: Inclusion of Roma, Migrant and Refugee Youth · Erasmus+ Youth Exchange · Bansko, Bulgaria, 2 &ndash; 11 November 2026. Funded by the European Union. Views and opinions expressed are those of the authors only and do not necessarily reflect those of the European Union or the European Commission.</p></div>
+  </div>
+</footer>
+
+<!-- toolbar -->
+<div class="edit-toolbar">
+  <div id="edit-status"></div>
+  <button class="tb-btn tb-small" id="undo-btn">↶ Undo</button>
+  <button class="tb-btn tb-small" id="redo-btn">↷ Redo</button>
+  <button class="tb-btn" style="background:var(--teal-d)" onclick="window.print()">&#x2B07; PDF</button>
+  <button class="tb-btn" id="toggle-edit">&#x270F; Edit Mode</button>
+</div>
+<button id="backTop">↑</button>
+
+<!-- modal + lightbox (used by the engine) -->
+<div class="modal" id="detail-modal"><div class="modal-box"><button class="modal-close" id="modal-close">✕</button><div id="modal-body"></div></div></div>
+<div id="detail-store" style="display:none"></div>
+<div class="lightbox" id="lightbox"><button class="lb-close" id="lb-close">✕</button><button class="lb-nav" id="lb-prev">‹</button><img id="lb-img" src=""><button class="lb-nav" id="lb-next">›</button><div id="lb-count"></div></div>
+<!-- hidden stubs so the engine's optional features never error -->
+<div style="display:none"><div id="opp-wall"></div><div id="opp-links"></div><div id="opp-empty"></div><div id="links-empty"></div><button id="add-link-btn"></button><button id="add-opp-btn"></button></div>
+<div id="icon-doc" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5"/></svg></div><div id="icon-rocket" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/></svg></div><div id="icon-book" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><div id="icon-star" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div id="icon-award" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13.5 17 22l-5-3-5 3 1.5-8.5"/></svg></div><div id="icon-people" style="display:none"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+
+<script>
+let editMode=false;
+const editableSelectors=[
+  '.hero-badge','.hero h1','.hero-subtitle','.hero-meta span','.hero-flags',
+  '.section-label','.section-title','.lead','.about-text p',
+  '.card h3','.card h4','.card p',
+  '.team-header h3','.team-header .count','.team-card p',
+  '.testi-quote','.testi-name',
+  '.act-card h3','.act-card p',
+  '.falken h3','.falken p','.cbtn span','.foot-dis p'
+];
+const imageSelectors='.photo-frame, .team-photo-slot, .hero-photo, .testi-photo';
+const TOOLKIT_DEFAULTS=[["doc", "Joint Declaration", "The joint declaration on youth inclusion in the Western Balkans-EU corridor."], ["rocket", "Local Follow-up Actions", "The five local inclusion actions the teams will run after the exchange."], ["book", "Case Studies", "Anonymised case studies prepared for the SALTO Inclusion and Diversity pool."]];
+const EDIT_PASSWORD='ROOTS2026';
+const SB_URL='https://nwbvlyempbzzbjdjvjuq.supabase.co';
+const SB_KEY='sb_publishable_R03HEsUOB96R33cIpI3uMA_8S5dogJs';
+const KP='rr_';
+const SB_HEADERS={apikey:SB_KEY,Authorization:'Bearer '+SB_KEY};
+const IDLE='Edit mode on — changes save automatically';
+function setStatus(m){const s=document.getElementById('edit-status');if(s)s.textContent=m;}
+function flash(m,t){setStatus(m);setTimeout(()=>setStatus(editMode?IDLE:''),t||1500);}
+function assignKeys(){
+  editableSelectors.forEach((sel,si)=>document.querySelectorAll(sel).forEach((el,ei)=>{if(!el.hasAttribute('data-ckey'))el.setAttribute('data-ckey','t_'+si+'_'+ei);}));
+  document.querySelectorAll(imageSelectors).forEach((el,i)=>{if(!el.hasAttribute('data-ckey'))el.setAttribute('data-ckey','img_'+i);});
+}
+function renderImage(slot,url){
+  if(slot._ph===undefined)slot._ph=slot.innerHTML;
+  slot.innerHTML='';const img=document.createElement('img');img.src=url;img.alt='Photo';slot.appendChild(img);
+  slot.style.border='none';slot.style.padding='0';
+  const rb=document.createElement('button');rb.className='slot-remove';rb.type='button';rb.innerHTML='&#x2716;';rb.title='Remove photo';
+  rb.addEventListener('click',e=>{e.stopPropagation();removeSlotImage(slot);});slot.appendChild(rb);
+}
+function clearImageUI(slot){slot.innerHTML=(slot._ph!==undefined?slot._ph:'');slot.style.border='';slot.style.padding='';}
+async function sbDeleteRow(key){try{await fetch(SB_URL+'/rest/v1/content?key=eq.'+encodeURIComponent(KP+key),{method:'DELETE',headers:SB_HEADERS});}catch(e){}}
+async function doSetImage(slot,key,url){renderImage(slot,url+(url.indexOf('?')<0?'?t='+Date.now():''));await sbUpsert(key,'image',url);}
+async function doClearImage(slot,key){clearImageUI(slot);await sbDeleteRow(key);}
+async function removeSlotImage(slot){if(!editMode)return;const key=slot.getAttribute('data-ckey');if(!key)return;
+  if(!confirm('Remove this photo?'))return;const url=(slot.querySelector('img')||{}).src||null;
+  pushAction({t:'image',slot,key,prev:url,next:null});await doClearImage(slot,key);flash('Photo removed ✓');}
+let undoStack=[],redoStack=[];
+function refreshUndoButtons(){const u=document.getElementById('undo-btn'),r=document.getElementById('redo-btn');if(u)u.disabled=!undoStack.length;if(r)r.disabled=!redoStack.length;}
+function pushAction(a){undoStack.push(a);redoStack=[];refreshUndoButtons();}
+async function applyValue(a,v){if(a.t==='text'){if(a.el){a.el.innerHTML=v;await sbUpsert(a.key,'text',v);}}else if(a.t==='image'){if(v)await doSetImage(a.slot,a.key,v);else await doClearImage(a.slot,a.key);}}
+async function doUndo(){if(!undoStack.length)return;const a=undoStack.pop();await applyValue(a,a.prev);redoStack.push(a);refreshUndoButtons();flash('Undone ↶',1200);}
+async function doRedo(){if(!redoStack.length)return;const a=redoStack.pop();await applyValue(a,a.next);undoStack.push(a);refreshUndoButtons();flash('Redone ↷',1200);}
+async function sbUpsert(key,type,value){
+  try{const r=await fetch(SB_URL+'/rest/v1/content?on_conflict=key',{method:'POST',headers:{...SB_HEADERS,'Content-Type':'application/json','Prefer':'resolution=merge-duplicates,return=minimal'},
+    body:JSON.stringify({key:KP+key,type,value,updated_at:new Date().toISOString()})});return r.ok;}catch(e){console.warn('save failed',e);return false;}
+}
+async function sbUploadImage(key,file){
+  try{const ext=(file.name.split('.').pop()||'jpg').toLowerCase().replace(/[^a-z0-9]/g,'')||'jpg';const path=KP+key+'_'+Date.now()+'.'+ext;
+    const r=await fetch(SB_URL+'/storage/v1/object/photos/'+path,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':file.type||'application/octet-stream'},body:file});
+    if(!r.ok){console.warn('upload failed',r.status);return null;}return SB_URL+'/storage/v1/object/public/photos/'+path;}catch(e){console.warn('upload error',e);return null;}
+}
+async function sbUploadFile(key,file){
+  try{const safe=(file.name||'file').replace(/[^A-Za-z0-9._-]/g,'_');const path=KP+key+'_'+Date.now()+'_'+safe;
+    const r=await fetch(SB_URL+'/storage/v1/object/photos/'+path,{method:'POST',headers:{apikey:SB_KEY,Authorization:'Bearer '+SB_KEY,'Content-Type':file.type||'application/octet-stream'},body:file});
+    if(!r.ok){console.warn('upload failed',r.status);return null;}return SB_URL+'/storage/v1/object/public/photos/'+path;}catch(e){console.warn('upload error',e);return null;}
+}
+function pickFile(accept,multiple,cb){const input=document.createElement('input');input.type='file';input.accept=accept;input.multiple=!!multiple;input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',ev=>{const files=[...ev.target.files];input.remove();if(files.length)cb(files);});input.click();}
+function fmtSize(n){if(!n)return '';return n>1048576?(n/1048576).toFixed(1)+' MB':Math.round(n/1024)+' KB';}
+const DL_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>';
+/* ---- handbook (single file) ---- */
+let handbook=null;
+function renderHandbook(){const row=document.getElementById('handbook-dl');if(!row)return;row.innerHTML='';
+  if(handbook&&handbook.url){const a=document.createElement('a');a.className='dl-btn';a.href=handbook.url;a.target='_blank';a.rel='noopener';a.download='';a.innerHTML=DL_ICON+'<span>Download the Handbook</span>';row.appendChild(a);
+    const m=document.createElement('span');m.className='dl-meta';m.textContent=(handbook.name||'')+(handbook.size?' · '+fmtSize(handbook.size):'');row.appendChild(m);}
+  else{const b=document.createElement('span');b.className='dl-btn soon';b.innerHTML=DL_ICON+'<span>Handbook coming soon</span>';row.appendChild(b);}
+  const up=document.createElement('button');up.type='button';up.className='up-btn';up.innerHTML='&#x2B06; Upload handbook (PDF)';up.onclick=()=>pickFile('.pdf,application/pdf',false,async files=>{setStatus('Uploading handbook…');const url=await sbUploadFile('file_handbook',files[0]);
+    if(url){handbook={url,name:files[0].name,size:files[0].size};await sbUpsert('file_handbook','file',JSON.stringify(handbook));renderHandbook();flash('Handbook saved ✓',2000);}else flash('Upload failed',2000);});row.appendChild(up);
+  if(handbook&&handbook.url){const rm=document.createElement('button');rm.type='button';rm.className='up-btn';rm.innerHTML='&#x2716; Remove file';rm.onclick=async()=>{if(!confirm('Remove the handbook file?'))return;const p=pathFromUrl(handbook.url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});await sbDeleteRow('file_handbook');handbook=null;renderHandbook();flash('Removed ✓');};row.appendChild(rm);}
+}
+/* ---- toolkit resources ---- */
+let resources={};
+function resKeyDefault(i){return 'res_default_'+i;}
+function renderResources(){const grid=document.getElementById('resources');if(!grid)return;grid.innerHTML='';
+  const list=[];TOOLKIT_DEFAULTS.forEach((d,i)=>{const k=resKeyDefault(i);const r=resources[k];if(r&&r.removed)return;list.push({key:k,icon:d[0],title:(r&&r.title)||d[1],desc:(r&&r.desc)||d[2],url:r&&r.url,fname:r&&r.fname,size:r&&r.size});});
+  Object.keys(resources).filter(k=>k.indexOf('res_default_')!==0).sort().forEach(k=>{const r=resources[k];if(!r||r.removed)return;list.push({key:k,icon:r.icon||'book',title:r.title||'New resource',desc:r.desc||'Describe this resource.',url:r.url,fname:r.fname,size:r.size});});
+  list.forEach(r=>grid.appendChild(makeResCard(r)));
+  const e=document.getElementById('res-empty');if(e)e.style.display=(!list.length&&editMode)?'block':'none';
+  if(editMode)bindResEditing();
+}
+function iconSvg(name){const t=document.getElementById('icon-'+name);return t?t.innerHTML:document.getElementById('icon-book').innerHTML;}
+function makeResCard(r){const c=document.createElement('div');c.className='res-card reveal in';c.setAttribute('data-reskey',r.key);
+  c.innerHTML='<div class="ic-circle">'+iconSvg(r.icon)+'</div><h3 class="res-title"></h3><p class="res-desc"></p>';
+  c.querySelector('.res-title').textContent=r.title;c.querySelector('.res-desc').textContent=r.desc;
+  if(r.url){const a=document.createElement('a');a.className='dl-btn';a.href=r.url;a.target='_blank';a.rel='noopener';a.download='';a.innerHTML=DL_ICON+'<span>Download</span>';c.appendChild(a);
+    const m=document.createElement('span');m.className='dl-meta';m.textContent=(r.fname||'')+(r.size?' · '+fmtSize(r.size):'');c.appendChild(m);}
+  else{const b=document.createElement('span');b.className='dl-btn soon';b.innerHTML=DL_ICON+'<span>Coming soon</span>';c.appendChild(b);}
+  const up=document.createElement('button');up.type='button';up.className='up-btn';up.innerHTML='&#x2B06; Upload file';up.onclick=()=>pickFile('*/*',false,async files=>{setStatus('Uploading…');const url=await sbUploadFile(r.key,files[0]);
+    if(url){await saveRes(r.key,{url,fname:files[0].name,size:files[0].size});flash('File saved ✓',2000);}else flash('Upload failed',2000);});c.appendChild(up);
+  const rm=document.createElement('button');rm.type='button';rm.className='remove-btn';rm.innerHTML='&#x2716;';rm.title='Remove resource';rm.onclick=async()=>{if(!confirm('Remove this resource card for everyone?'))return;
+    if(r.url){const p=pathFromUrl(r.url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});}
+    if(r.key.indexOf('res_default_')===0){await saveRes(r.key,{removed:true,url:null,fname:null,size:null});}else{delete resources[r.key];await sbDeleteRow(r.key);renderResources();}flash('Removed ✓');};c.appendChild(rm);
+  return c;}
+async function saveRes(key,patch){const cur=resources[key]||{};resources[key]={...cur,...patch};await sbUpsert(key,'res',JSON.stringify(resources[key]));renderResources();}
+function bindResEditing(){document.querySelectorAll('#resources .res-card').forEach(c=>{const key=c.getAttribute('data-reskey');['res-title','res-desc'].forEach(cls=>{const el=c.querySelector('.'+cls);el.setAttribute('contenteditable','true');
+  el.addEventListener('blur',async()=>{const field=cls==='res-title'?'title':'desc';const v=el.textContent.trim();if((resources[key]||{})[field]===v)return;const cur=resources[key]||{};resources[key]={...cur,[field]:v};setStatus('Saving…');await sbUpsert(key,'res',JSON.stringify(resources[key]));flash('Saved ✓');});});});}
+function addResource(){if(!editMode)return;const key='res_'+Date.now()+'_'+Math.floor(Math.random()*100000);saveRes(key,{icon:'book',title:'New resource',desc:'Click to describe this resource, then upload the file.'});}
+/* ---- campaign: visuals wall + links ---- */
+function makeOppItem(key,url){const it=makeWallItem(key,url);it.setAttribute('data-wall','opp');return it;}
+function renderOpp(rows){const w=document.getElementById('opp-wall');if(!w)return;w.innerHTML='';rows.forEach(r=>w.appendChild(makeOppItem(r.key,r.value)));const e=document.getElementById('opp-empty');if(e)e.style.display=(!rows.length&&editMode)?'block':'none';}
+function addOppPhoto(){if(!editMode)return;pickFile('image/*',true,async files=>{const w=document.getElementById('opp-wall');const e=document.getElementById('opp-empty');if(e)e.style.display='none';
+  for(let i=0;i<files.length;i++){setStatus('Uploading visual '+(i+1)+' of '+files.length+'…');const key='opp_'+Date.now()+'_'+i+'_'+Math.floor(Math.random()*100000);const url=await sbUploadImage(key,files[i]);
+    if(url&&await sbUpsert(key,'opp',url))w.appendChild(makeOppItem(key,url+'?t='+Date.now()));else setStatus('A visual failed to upload');}flash('Visuals added ✓',2000);});}
+let links={};
+function platformOf(u){u=(u||'').toLowerCase();if(u.includes('instagram'))return 'ig';if(u.includes('tiktok'))return 'tt';if(u.includes('facebook')||u.includes('fb.watch'))return 'fb';if(u.includes('youtu'))return 'yt';return 'web';}
+const PLAT_ICON={ig:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="20" x="2" y="2" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  tt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 3c.3 2.3 1.8 4 4.5 4.2v3.1c-1.6 0-3.1-.5-4.5-1.4v6.3A5.8 5.8 0 1 1 10.7 9.4v3.2a2.7 2.7 0 1 0 2.7 2.7V3h3.1z"/></svg>',
+  fb:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 8h3V4h-3c-2.8 0-4 1.9-4 4.3V11H7v4h3v6h4v-6h3l1-4h-4V8.7c0-.5.3-.7 1-.7z"/></svg>',
+  yt:'<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12 31 31 0 0 0 1 16.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31 31 0 0 0 .5-4.8 31 31 0 0 0-.5-4.8zM9.8 15V9l5.8 3-5.8 3z"/></svg>',
+  web:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>'};
+const PLAT_NAME={ig:'Instagram',tt:'TikTok',fb:'Facebook',yt:'YouTube',web:'Link'};
+function renderLinks(){const g=document.getElementById('opp-links');if(!g)return;g.innerHTML='';const keys=Object.keys(links).sort();
+  keys.forEach(k=>{const l=links[k];const p=platformOf(l.url);const a=document.createElement('a');a.className='link-card';a.href=l.url;a.target='_blank';a.rel='noopener';
+    a.innerHTML='<div class="lk-ic '+p+'">'+PLAT_ICON[p]+'</div><div><h4></h4><div class="lk-url"></div></div>';a.querySelector('h4').textContent=l.title||PLAT_NAME[p]+' post';a.querySelector('.lk-url').textContent=PLAT_NAME[p]+' · '+l.url.replace(/^https?:\/\//,'').slice(0,48);
+    const ed=document.createElement('button');ed.type='button';ed.className='edit-link';ed.innerHTML='&#x270E;';ed.title='Edit';ed.onclick=e=>{e.preventDefault();e.stopPropagation();editLink(k);};a.appendChild(ed);
+    const rm=document.createElement('button');rm.type='button';rm.className='remove-btn';rm.innerHTML='&#x2716;';rm.title='Remove link';rm.onclick=async e=>{e.preventDefault();e.stopPropagation();if(!confirm('Remove this link for everyone?'))return;delete links[k];await sbDeleteRow(k);renderLinks();flash('Removed ✓');};a.appendChild(rm);
+    a.addEventListener('click',e=>{if(editMode){e.preventDefault();}});g.appendChild(a);});
+  const e=document.getElementById('links-empty');if(e)e.style.display=(!keys.length&&editMode)?'block':'none';}
+async function addLink(){if(!editMode)return;const url=prompt('Paste the link to the post or reel (Instagram, TikTok, Facebook, YouTube…):');if(!url)return;const title=prompt('Title for this post (optional):')||'';
+  const key='lnk_'+Date.now()+'_'+Math.floor(Math.random()*100000);links[key]={url:url.trim(),title:title.trim()};await sbUpsert(key,'opplink',JSON.stringify(links[key]));renderLinks();flash('Link added ✓');}
+async function editLink(k){const l=links[k];const url=prompt('Link:',l.url);if(url===null)return;const title=prompt('Title:',l.title||'');if(title===null)return;links[k]={url:url.trim(),title:title.trim()};await sbUpsert(k,'opplink',JSON.stringify(links[k]));renderLinks();flash('Saved ✓');}
+/* ---- detail modal ---- */
+let openPane=null;
+function openDetail(id){const pane=document.getElementById('detail_'+id);if(!pane)return;const box=document.getElementById('modal-body');box.innerHTML='';box.appendChild(pane);openPane=pane;document.getElementById('detail-modal').classList.add('open');document.body.style.overflow='hidden';}
+function closeDetail(){if(openPane){document.getElementById('detail-store').appendChild(openPane);openPane=null;}document.getElementById('detail-modal').classList.remove('open');document.body.style.overflow='';}
+async function saveText(el){const key=el.getAttribute('data-ckey');if(!key)return;setStatus('Saving…');const ok=await sbUpsert(key,'text',el.innerHTML);setStatus(ok?'Saved ✓':'Save failed — check connection');if(ok)setTimeout(()=>setStatus(editMode?IDLE:''),1500);}
+async function loadContent(){
+  assignKeys();
+  try{const r=await fetch(SB_URL+'/rest/v1/content?select=key,type,value&key=like.'+KP+'*&order=key.asc',{headers:SB_HEADERS});if(!r.ok)return;const rows=await r.json();const map={};
+    rows.forEach(x=>{if(x.key&&x.key.indexOf(KP)===0)map[x.key.slice(KP.length)]=x;});
+    document.querySelectorAll('[data-ckey]').forEach(el=>{const x=map[el.getAttribute('data-ckey')];if(!x)return;if(x.type==='text')el.innerHTML=x.value;else if(x.type==='image'&&x.value)renderImage(el,x.value);});
+    renderWall(rows.filter(x=>x.type==='wall'&&x.value).map(x=>({key:x.key.slice(KP.length),value:x.value})));
+    renderOpp(rows.filter(x=>x.type==='opp'&&x.value).map(x=>({key:x.key.slice(KP.length),value:x.value})));
+    const hb=map['file_handbook'];if(hb&&hb.type==='file'){try{handbook=JSON.parse(hb.value);}catch(e){}}
+    rows.filter(x=>x.type==='res').forEach(x=>{try{resources[x.key.slice(KP.length)]=JSON.parse(x.value);}catch(e){}});
+    rows.filter(x=>x.type==='opplink').forEach(x=>{try{links[x.key.slice(KP.length)]=JSON.parse(x.value);}catch(e){}});
+  }catch(e){console.warn('load failed',e);}
+  renderHandbook();renderResources();renderLinks();
+}
+function pathFromUrl(url){const p=url.split('/storage/v1/object/public/photos/');return p[1]?p[1].split('?')[0]:null;}
+function makeWallItem(key,url){const item=document.createElement('div');item.className='wall-item';item.setAttribute('data-wallkey',key);
+  const img=document.createElement('img');img.src=url;img.alt='Project photo';img.loading='lazy';item.appendChild(img);
+  item.addEventListener('click',()=>{if(!editMode)openLightbox(item);});
+  const b=document.createElement('button');b.className='remove-btn';b.innerHTML='&#x2716;';b.title='Remove photo';b.onclick=(e)=>{e.stopPropagation();removeWallPhoto(key,url,item);};item.appendChild(b);return item;}
+function renderWall(rows){const wall=document.getElementById('photo-wall');if(!wall)return;wall.innerHTML='';rows.forEach(r=>wall.appendChild(makeWallItem(r.key,r.value)));
+  const e=document.getElementById('wall-empty');if(e)e.style.display=(!rows.length&&editMode)?'block':'none';}
+function addWallPhoto(){if(!editMode)return;const input=document.createElement('input');input.type='file';input.accept='image/*';input.multiple=true;input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',async(ev)=>{const files=[...ev.target.files];input.remove();if(!files.length)return;const wall=document.getElementById('photo-wall');const e=document.getElementById('wall-empty');if(e)e.style.display='none';
+    for(let i=0;i<files.length;i++){setStatus('Uploading photo '+(i+1)+' of '+files.length+'…');const key='wall_'+Date.now()+'_'+i+'_'+Math.floor(Math.random()*100000);const url=await sbUploadImage(key,files[i]);
+      if(url&&await sbUpsert(key,'wall',url)){wall.appendChild(makeWallItem(key,url+'?t='+Date.now()));}else{setStatus('A photo failed to upload — please try again');}}
+    flash('Photos added ✓',2000);});input.click();}
+async function removeWallPhoto(key,url,item){if(!editMode)return;if(!confirm('Remove this photo for everyone?'))return;setStatus('Removing…');
+  try{await fetch(SB_URL+'/rest/v1/content?key=eq.'+encodeURIComponent(KP+key),{method:'DELETE',headers:SB_HEADERS});const p=pathFromUrl(url);if(p)await fetch(SB_URL+'/storage/v1/object/photos/'+p,{method:'DELETE',headers:SB_HEADERS});item.remove();flash('Removed ✓');}
+  catch(e){console.warn('remove failed',e);setStatus('Remove failed');}}
+function toggleEdit(){
+  if(!editMode){const input=prompt('Enter edit password:');if(input!==EDIT_PASSWORD){if(input!==null)alert('Wrong password.');return;}}
+  editMode=!editMode;const btn=document.getElementById('toggle-edit');
+  if(editMode){assignKeys();document.body.classList.add('editing');btn.classList.add('active');btn.innerHTML='&#x2716; Exit Edit';setStatus(IDLE);
+    const ab=document.getElementById('add-photo-btn');if(ab)ab.style.display='inline-block';
+    const e=document.getElementById('wall-empty');if(e&&!document.querySelector('#photo-wall .wall-item'))e.style.display='block';
+    editableSelectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>{el.setAttribute('contenteditable','true');
+      if(!el.dataset.boundBlur){el.addEventListener('focus',()=>{el._prevText=el.innerHTML;});
+        el.addEventListener('blur',()=>{const prev=el._prevText,next=el.innerHTML;saveText(el);if(prev!==undefined&&prev!==next)pushAction({t:'text',el,key:el.getAttribute('data-ckey'),prev,next});});el.dataset.boundBlur='1';}}));
+    document.querySelectorAll(imageSelectors).forEach(el=>el.addEventListener('click',handleImageClick));
+    ['undo-btn','redo-btn'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='inline-block';});refreshUndoButtons();
+    renderResources();renderLinks();const oe=document.getElementById('opp-empty');if(oe&&!document.querySelector('#opp-wall .wall-item'))oe.style.display='block';
+  }else{document.body.classList.remove('editing');btn.classList.remove('active');btn.innerHTML='&#x270F; Edit Mode';setStatus('');
+    const ab=document.getElementById('add-photo-btn');if(ab)ab.style.display='none';const e=document.getElementById('wall-empty');if(e)e.style.display='none';
+    editableSelectors.forEach(sel=>document.querySelectorAll(sel).forEach(el=>el.removeAttribute('contenteditable')));
+    document.querySelectorAll(imageSelectors).forEach(el=>el.removeEventListener('click',handleImageClick));undoStack=[];redoStack=[];
+    ['undo-btn','redo-btn'].forEach(id=>{const b=document.getElementById(id);if(b)b.style.display='none';});
+    renderResources();renderLinks();['opp-empty','links-empty','res-empty'].forEach(id=>{const e=document.getElementById(id);if(e)e.style.display='none';});}
+}
+function handleImageClick(e){if(!editMode)return;e.stopPropagation();const slot=e.currentTarget;const key=slot.getAttribute('data-ckey');const prevUrl=(slot.querySelector('img')||{}).src||null;
+  const input=document.createElement('input');input.type='file';input.accept='image/*';input.style.display='none';document.body.appendChild(input);
+  input.addEventListener('change',async(ev)=>{const file=ev.target.files[0];input.remove();if(!file)return;setStatus('Uploading photo…');const url=await sbUploadImage(key,file);
+    if(url){renderImage(slot,url+'?t='+Date.now());await sbUpsert(key,'image',url);pushAction({t:'image',slot,key,prev:prevUrl,next:url});flash('Photo saved ✓',2000);}else{flash('Upload failed — please try again',2000);}});input.click();}
+/* lightbox */
+let lbIndex=0;
+let lbWall='#photo-wall';
+function wallImgs(){return [...document.querySelectorAll(lbWall+' .wall-item img')].map(i=>i.src);}
+function openLightbox(item){lbWall='#'+item.parentElement.id;const imgs=[...document.querySelectorAll(lbWall+' .wall-item')];lbIndex=imgs.indexOf(item);showLb();document.getElementById('lightbox').classList.add('open');}
+function showLb(){const s=wallImgs();if(!s.length)return;lbIndex=(lbIndex+s.length)%s.length;document.getElementById('lb-img').src=s[lbIndex];document.getElementById('lb-count').textContent=(lbIndex+1)+' / '+s.length;}
+function closeLb(){document.getElementById('lightbox').classList.remove('open');}
+/* ui */
+function countUp(el){const raw=(el.textContent||'').trim();const t=parseInt(raw,10);if(isNaN(t))return;const d=1100,t0=performance.now();(function s(n){const p=Math.min(1,(n-t0)/d);el.textContent=Math.round(t*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(s);else el.textContent=raw;})(t0);}
+document.addEventListener('DOMContentLoaded',()=>{
+  loadContent();
+  const tb=document.getElementById('toggle-edit');if(tb)tb.addEventListener('click',toggleEdit);
+  const ub=document.getElementById('undo-btn');if(ub)ub.addEventListener('click',doUndo);const rb=document.getElementById('redo-btn');if(rb)rb.addEventListener('click',doRedo);
+  const ab=document.getElementById('add-photo-btn');if(ab)ab.addEventListener('click',addWallPhoto);
+  var _rb=document.getElementById('add-res-btn');if(_rb)_rb.addEventListener('click',addResource);var _lb=document.getElementById('add-link-btn');if(_lb)_lb.addEventListener('click',addLink);var _ob=document.getElementById('add-opp-btn');if(_ob)_ob.addEventListener('click',addOppPhoto);
+  document.querySelectorAll('[data-detail]').forEach(c=>{c.classList.add('clickable');const b=document.createElement('button');b.type='button';b.className='detail-btn';b.textContent='ℹ Edit details';c.appendChild(b);
+    c.addEventListener('click',e=>{if(editMode&&!e.target.closest('.detail-btn'))return;e.preventDefault();openDetail(c.getAttribute('data-detail'));});});
+  document.getElementById('modal-close').onclick=closeDetail;document.getElementById('detail-modal').addEventListener('click',e=>{if(e.target.id==='detail-modal')closeDetail();});
+  document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+  document.getElementById('lb-close').onclick=closeLb;document.getElementById('lb-prev').onclick=()=>{lbIndex--;showLb();};document.getElementById('lb-next').onclick=()=>{lbIndex++;showLb();};
+  document.getElementById('lightbox').addEventListener('click',e=>{if(e.target.id==='lightbox')closeLb();});
+  document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLb();if(e.key==='ArrowLeft'){lbIndex--;showLb();}if(e.key==='ArrowRight'){lbIndex++;showLb();}});
+  const nt=document.getElementById('navToggle'),nl=document.getElementById('navLinks');nt.addEventListener('click',()=>nl.classList.toggle('open'));nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}}),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  const so=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){countUp(en.target);so.unobserve(en.target);}}),{threshold:.6});
+  document.querySelectorAll('.stat-card .number').forEach(el=>so.observe(el));
+  const secs=[...document.querySelectorAll('section[id]')],links=[...document.querySelectorAll('.nav-links a')],bt=document.getElementById('backTop'),pr=document.getElementById('scrollProg');
+  function onScroll(){const y=window.scrollY;pr.style.width=(y/(document.body.scrollHeight-innerHeight)*100)+'%';bt.classList.toggle('show',y>600);
+    let cur='';secs.forEach(s=>{if(y>=s.offsetTop-140)cur=s.id;});links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));}
+  window.addEventListener('scroll',onScroll,{passive:true});onScroll();bt.onclick=()=>window.scrollTo({top:0,behavior:'smooth'});
+});
+</script>
+</body></html>
