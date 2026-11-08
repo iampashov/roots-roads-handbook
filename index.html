@@ -255,12 +255,10 @@ section:nth-of-type(even) .section-label{background:#e7e7fc;color:var(--indigo)}
  .about-text p{font-size:12px;margin-bottom:8px}
  .section-title,.section-label,h2,h3{break-after:avoid}
  a[href]{color:inherit;text-decoration:none}
- /* page structure: cover = p1, contents = p2, teams & voices one page each */
- header.hero{break-after:page;padding:6px 0 10px}
- #contents{break-after:page}
+ /* cover fills page 1; everything else flows densely, no forced blank space */
+ header.hero{break-after:page;min-height:262mm;display:flex;flex-direction:column;justify-content:center;padding:0}
  .toc{grid-template-columns:repeat(2,1fr);gap:9px}.toc-item{font-size:13px;padding:9px 12px}.toc-n{width:30px;height:30px;font-size:14px;flex-basis:30px}
- #teams{break-before:page}#voices{break-before:page}
- #teams .grid,#voices .grid{grid-template-columns:repeat(3,1fr)!important;gap:9px}
+ #teams .grid,#voices .grid{grid-template-columns:repeat(3,1fr)!important;gap:9px;break-inside:avoid}
  .team-photo-slot{height:92px;aspect-ratio:auto}.team-body{padding:7px 9px}.team-header{margin:5px 0 3px}.team-header .flag{font-size:20px}.team-header h3{font-size:13px}.team-header .count{font-size:8.5px}.team-card p{font-size:10px}.team-top{height:5px}
  .testi{padding:11px}.testi-photo{width:50px;height:50px;flex:0 0 50px;font-size:9px}.testi .q-ic{width:18px;height:18px}.testi-quote{font-size:11px;margin-bottom:7px}.testi-name{font-size:11.5px}.testi-name .cc{font-size:10px}
  .act-card{padding:10px}.act-card h3{font-size:12.5px;margin:7px 0 4px}.act-card p{font-size:10.5px}.photo-frame{aspect-ratio:auto;height:58px;margin-bottom:7px;font-size:11px}.photo-frame .ico{width:22px;height:22px}
